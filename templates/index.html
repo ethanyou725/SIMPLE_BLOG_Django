@@ -1,0 +1,40 @@
+{% extends "base.html"%}
+{% load my_markdown %}
+
+{% block content%}
+<div class="content pure-u-1 pure-u-md-3-4">
+
+          <div class="posts">
+            <h1 class="content-subhead">Pinned Post</h1>
+               {% if none %}
+                <h2 class="post-title">No Result!</a></h2>
+                {% else %}
+            {% for post in post_list%}
+            <section class="post">
+              <header class="post-header">
+                <h2 class="post-title"><a href="{% url 'd' id=post.id %}">{{post.title}}</a></h2>
+                <p class="post-meta">  <!--href="/{{post.id}}" -->
+                  Tag <a  class="post-author" href="{% url 'category' category=post.category %}">{{post.category}}
+                  </a> Time <a class="post-category  post-category-yui" >{{post.date_time|date:"Y /m /d"}}</a>
+                </p>
+              </header>
+              <div class="post-description">
+                 {{post.content|my_markdown|truncatewords:1}}
+              </div>
+            </section>
+            {% endfor %}
+          </div>
+        <div class="pure-u-1 pure-u-md-2-3"> <!--分页div-->
+        {% if post_list.has_previous %}
+            <a href="?page={{ post_list.previous_page_number }}" class="button-success pure-button">PREV</a>
+        {% endif %}
+        {% if post_list.has_next %}
+            <a href="?page={{ post_list.next_page_number }}" class="button-success pure-button">NEXT</a>
+        {% endif %}
+            <p><button class="button-warning pure-button">{{ post_list.number }}/{{ post_list.paginator.num_pages }}</button>
+
+
+        </div>
+      </div>
+{% endif%}
+{% endblock%}
