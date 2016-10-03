@@ -1,0 +1,36 @@
+<div class="container">
+    <header id="site-header">
+        <div class="row">
+            <div class="col-md-5 col-sm-5 col-xs-8">
+                <div class="logo">
+                    <h1><a>My SIMPLE BLOG</a></h1>
+                </div>
+            </div><!-- col-md-4 -->
+            <div class="col-md-6 col-sm-7 col-xs-4">
+                <div class="navbar navbar-default">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                                    data-target=".navbar-collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" >&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                        </div>
+                        <div class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav">
+                                <li class="active" ><a href="/" >Home</a></li>
+                                <li><a href="{% url 'about_me'%}">About</a></li>
+                                <li><a href="{% url 'archive'%}">Archive</a></li>
+                                <li><a href="{% url 'RSS' %}">RSS</a></li>
+                                 <li><a href="javascript:void(0)">Contact</a></li>
+                            </ul>
+                        </div><!--/.nav-collapse -->
+                    </div>
+                </div>
+            </div><!-- col-md-8 -->
+        </div>
+    </header>
+</div>

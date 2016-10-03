@@ -1,0 +1,36 @@
+<aside class="col-md-4 pull right">
+    <form action="{% url 'search' %}" method="get" class="form-inline">
+        <legend></legend>
+        <input type="text" class="form-control" placeholder="operator:AND NOT OR" style="color:black" name="keywords">
+        <input type="submit" value="Search" class="btn btn-sm btn-default">
+
+    </form>
+
+     <div class="widget widget-category">
+        <h3 class="widget-title">Category</h3>
+        <ul>
+            {% for post in item_list%}
+            {% if post.category %}
+            {% ifchanged %}<!--过滤相同标签-->
+            <li><a href="{% url 'category' post.category%}" >{{post.category|lower}}</a></li>
+            {% endifchanged %}
+            {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="widget widget-recent-posts">
+        <h3 class="widget-title">Recent Posts</h3>
+        <ul>
+            {% for post in item_list%}
+            {% if post.date_time %}
+            {% ifchanged %}<!--过滤相同标签-->
+            <li><a href="javascript:void(0)" >{{post.date_time|date}}</a></li>
+            {% endifchanged %}
+            {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+
+
+</aside>

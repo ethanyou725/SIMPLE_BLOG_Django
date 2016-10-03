@@ -21,17 +21,19 @@ from article.views import RSSFeed
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    # url(r'^$',views.hello),
-    # url(r'^(?P<my_args>\d+)/$',views.detail),
-    #^(?P<my_args>\d+)/$  (?P<num>[0-9]+)
-
-    url(r'^article/page(?P<a>\d+)/', views.g),
-    url(r'^test/$', views.test),
-    url(r'^$',views.home, name='home'),
-    url(r'^post(?P<id>\d+)/$', views.detail, name='d'),
-    url(r'archive/$',views.archive, name='archive'),
-    url(r'aboutme/$',views.about_me, name='about_me'),
-    url(r'category/(?P<category>.+)/$', views.tag, name='category'),
+    # url(r'^article/page(?P<a>\d+)/', views.g),
+    # url(r'^test/$', views.test),
+    url(r'^$', views.IndexView.as_view(), name='home'),
+    # url(r'^post(?P<id>\d+)/$', views.detail, name='d'),
+    url(r'^post/(\d+)/$', views.SingleView.as_view(), name='single'),
+    url(r'archive/$',views.ArchiveView.as_view(), name='archive'),
+    # url(r'aboutme/$',views.about_me, name='about_me'),
+    url(r'aboutme/$',views.AboutMeView.as_view(), name='about_me'),
+    # url(r'category/(?P<category>.+)/$', views.category, name='category'),
     url(r'search/$', views.search, name='search'),
+    # url(r'search/(?P<pk>\w+)$', views.SearchView.as_view(), name='search'),
     url(r'^feed/$', RSSFeed(), name="RSS"),
+    url(r'test/$',views.AboutView.as_view()),
+    url(r'category/(\w+)/$', views.CateView.as_view(), name='category'),
+    # url(r'date/(\w+)/$', views.DateView.as_view(), name='title'),
 ]

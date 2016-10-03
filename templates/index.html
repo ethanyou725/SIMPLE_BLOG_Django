@@ -1,40 +1,50 @@
 {% extends "base.html"%}
 {% load my_markdown %}
-
 {% block content%}
-<div class="content pure-u-1 pure-u-md-3-4">
+<main class="col-md-8">
+    {% if none%}
 
-          <div class="posts">
-            <h1 class="content-subhead">Pinned Post</h1>
-               {% if none %}
-                <h2 class="post-title">No Result!</a></h2>
-                {% else %}
-            {% for post in post_list%}
-            <section class="post">
-              <header class="post-header">
-                <h2 class="post-title"><a href="{% url 'd' id=post.id %}">{{post.title}}</a></h2>
-                <p class="post-meta">  <!--href="/{{post.id}}" -->
-                  Tag <a  class="post-author" href="{% url 'category' category=post.category %}">{{post.category}}
-                  </a> Time <a class="post-category  post-category-yui" >{{post.date_time|date:"Y /m /d"}}</a>
-                </p>
-              </header>
-              <div class="post-description">
-                 {{post.content|my_markdown|truncatewords:1}}
-              </div>
-            </section>
-            {% endfor %}
-          </div>
-        <div class="pure-u-1 pure-u-md-2-3"> <!--分页div-->
-        {% if post_list.has_previous %}
-            <a href="?page={{ post_list.previous_page_number }}" class="button-success pure-button">PREV</a>
-        {% endif %}
-        {% if post_list.has_next %}
-            <a href="?page={{ post_list.next_page_number }}" class="button-success pure-button">NEXT</a>
-        {% endif %}
-            <p><button class="button-warning pure-button">{{ post_list.number }}/{{ post_list.paginator.num_pages }}</button>
-
-
+    <h1 class="entry-title">
+        <a>No Result!Sorry!</a>
+    </h1>
+    {% else %}
+    {% for post in post_list%}
+    <article class="post post-1">
+        <header class="entry-header">
+            <h1 class="entry-title">
+                <a href="{% url 'single' post.id %}">{{post.title}}</a>
+            </h1>
+            <div class="entry-meta">
+                <span class="post-category"><a href="#">{{post.category}}</a></span>
+                <span class="post-date"><a href="#">{{post.date_time|date:"Y/m/d"}}</a></span>
+                <!--<span class="post-author"><a href="#">Albert Einstein</a></span>-->
+                <!--<span class="comments-link"><a href="#">4 Comments</a></span>-->
+            </div>
+        </header>
+        <div class="entry-content clearfix">
+            <p> {{post.content|my_markdown|truncatewords:1}}</p>
+            <!--<div class="read-more cl-effect-14">-->
+            <!--<a href="#" class="more-link">Continue reading <span class="meta-nav">→</span></a>-->
+            <!--</div>-->
         </div>
-      </div>
-{% endif%}
-{% endblock%}
+        <p>
+    </article>
+
+    <br/><br/>
+    {% endfor %}
+    <div class="col-md-4 col-sm-5 col-xs-8 pull-right">
+
+        {% if page_obj.has_previous %}
+        <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-default">PREV</a>
+        {% endif %}
+        {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}" class="btn btn-default">NEXT</a>
+        {% endif %}
+        {% if is_paginated %}
+        <button class="btn btn-default">{{ page_obj.number }}/{{ page_obj.paginator.num_pages }}</button>
+        {% endif %}
+        {% endif %}
+    </div>
+
+</main>
+{% endblock %}

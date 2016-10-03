@@ -2,9 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>test</title>
+    <title>Title</title>
 </head>
 <body>
-<strong>{{ current_time }}</strong>
+this is a test html!
+{% for post in post_list%}
+{{post.title}}<p>
+</p>
+{{post.content}}
+{% endfor %}
 </body>
 </html>

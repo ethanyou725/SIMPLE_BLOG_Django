@@ -3,6 +3,7 @@ from django.core.urlresolvers import reverse
 
 # Create your models here.
 
+
 class Article(models.Model):
     title = models.CharField(max_length=100)  # 题目
     category = models.CharField(max_length=50)  # 标签
@@ -13,8 +14,8 @@ class Article(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        path=reverse('d',kwargs={'id':self.id})
-        return '127.0.0.1:8000%s' % path
+        # path=reverse('single', kwargs={'id':self.id})
+        return '/post/%i/' % self.id
 
     class Meta:  # 按id降序
         ordering = ['id']
