@@ -7,7 +7,8 @@ from django.views.generic import DetailView
 from article.models import Article
 from django.views.generic import ListView
 from django.views.generic import View
-
+from django.views.generic import FormView
+from django.views.generic.edit import FormMixin
 # Create your views here.
 
 # test
@@ -91,10 +92,24 @@ def hello(request):
 #     return render(request, 'category.html', {'post_list': post_list})
 #
 #
+
+class AboutView(View):
+    template_name = "test.html"
+
+
+class BaseView(ListView):
+    model = Article
+
+    def get_context_data(self, **kwargs):
+        context = super(BaseView, self).get_context_data(**kwargs)
+        context['item_list'] = Article.objects.values('category', 'date_time')
+        return context
+
+
 def search(request):
     item_list = Article.objects.values('category', 'date_time')
-    keywords = request.GET.get("keywords")
-    if keywords is "":
+    keywords = request.GET.get("q")
+    if keywords.strip() == "":
         return HttpResponseRedirect("/")
     else:
         post_list = Article.objects.filter(content__icontains=keywords.lower())
@@ -102,6 +117,20 @@ def search(request):
             return render(request, 'index.html', {'post_list': post_list, 'none': True,'item_list':item_list})
         else:
             return render(request, 'index.html', {'post_list': post_list, 'none': False,'item_list':item_list})
+
+#
+# class SearchView(BaseView):
+#     template_name = 'index.html'
+#     context_object_name = 'post_list'
+#
+#     def get_queryset(self):
+#         keyword=self.kwargs['q']
+#         if keyword and keyword.strip() != "":
+#             post_list = Article.objects.all()
+#         else:
+#             post_list = Article.object.filter(content__icontains=self.keyword.lower())
+#         return post_list
+
 
 
 '''Rss'''
@@ -124,19 +153,6 @@ class RSSFeed(Feed):
 
     def item_description(self, item):
         return item.content
-
-
-class AboutView(View):
-    template_name = "test.html"
-
-
-class BaseView(ListView):
-    model = Article
-
-    def get_context_data(self, **kwargs):
-        context = super(BaseView, self).get_context_data(**kwargs)
-        context['item_list'] = Article.objects.values('category', 'date_time')
-        return context
 
 
 class IndexView(BaseView):
@@ -162,7 +178,7 @@ class SingleView(BaseView):
     def get_queryset(self):
         # post = get_object_or_404(Article, id=self.args[0])
         try:
-            post = Article.objects.get(id=self.args[0])
+            post = Article.objects.get(id=self.kwargs['id'])
         except:
             raise Http404
         return post
