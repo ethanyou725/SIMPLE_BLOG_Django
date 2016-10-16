@@ -22,7 +22,6 @@ from article.views import RSSFeed
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     # url(r'^article/page(?P<a>\d+)/', views.g),
-    # url(r'^test/$', views.test),
     url(r'^$', views.IndexView.as_view(), name='home'),
     # url(r'^post(?P<id>\d+)/$', views.detail, name='d'),
     url(r'^post/(?P<id>\d+)/$', views.SingleView.as_view(), name='single'),
@@ -32,7 +31,6 @@ urlpatterns = [
     # url(r'category/(?P<category>.+)/$', views.category, name='category'),
     # url(r'search/$', views.search, name='search'),
     url(r'search/$',views.SearchView.as_view(),name='search'),
-
     url(r'^feed/$', RSSFeed(), name="RSS"),
     url(r'test/$',views.AboutView.as_view()),
     url(r'category/(\w+)/$', views.CateView.as_view(), name='category'),

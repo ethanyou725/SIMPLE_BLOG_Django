@@ -126,7 +126,7 @@ class BaseView(ListView,FormView):
 
 
 
-class SearchView(BaseView, FormView,):
+class SearchView(BaseView, FormView,): #不能写反
     form_class = SearchForm
     context_object_name = 'post_list'
     template_name = 'index.html'
