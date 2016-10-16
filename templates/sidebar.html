@@ -1,7 +1,9 @@
 <aside class="col-md-4 pull right">
-    <form action="{% url 'search'%}" method="get" class="form-inline">
+    <form action="{% url 'search' %}" method="get" class="form-inline">
         <legend></legend>
-        <input type="text" class="form-control" placeholder="operator:AND NOT OR" style="color:black" name="q">
+        <!--<input type="text" class="form-control" placeholder="operator:AND NOT OR"  name="q">-->
+        {{ form }}
+        {% csrf_token %}<!--不加csrf_token,搜索某些关键词会出错,如'test'-->
         <input type="submit" value="Search" class="btn btn-sm btn-default">
 
     </form>
@@ -25,7 +27,7 @@
             {% for post in item_list%}
             {% if post.date_time %}
             {% ifchanged %}<!--过滤相同标签-->
-            <li><a href="javascript:void(0)" >{{post.date_time|date}}</a></li>
+            <li><a href="javascript:void(0)" >{{post.date_time|date:"Y-m-d"}}</a></li>
             {% endifchanged %}
             {% endif %}
             {% endfor %}

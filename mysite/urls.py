@@ -30,9 +30,9 @@ urlpatterns = [
     # url(r'aboutme/$',views.about_me, name='about_me'),
     url(r'aboutme/$',views.AboutMeView.as_view(), name='about_me'),
     # url(r'category/(?P<category>.+)/$', views.category, name='category'),
-    url(r'search/$', views.search, name='search'),
-    # url(r'search/(?P<q>.+)/$',views.SearchView.as_view(),name='search'),
-    # url(r'search/(?P<pk>\w+)$', views.SearchView.as_view(), name='search'),
+    # url(r'search/$', views.search, name='search'),
+    url(r'search/$',views.SearchView.as_view(),name='search'),
+
     url(r'^feed/$', RSSFeed(), name="RSS"),
     url(r'test/$',views.AboutView.as_view()),
     url(r'category/(\w+)/$', views.CateView.as_view(), name='category'),

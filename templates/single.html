@@ -19,10 +19,10 @@
         </div>
         <div class="col-md-4 col-sm-5 col-xs-8 pull-right">
             {% ifnotequal post.id 1 %}
-            <a href="{% url 'single' post.id|add:'-1' %}" class="btn btn-success">PREV</a>
+            <a href="{% url 'single' post.id|add:'-1' %}" class="btn btn-success">&lt;&lt; PREV</a>
             {% endifnotequal %}
             {% ifnotequal post.id count %}
-            <a href="{% url 'single' post.id|add:'1' %}" class="btn btn-danger">NEXT</a>
+            <a href="{% url 'single' post.id|add:'1' %}" class="btn btn-danger">NEXT &gt;&gt;</a>
             {% endifnotequal %}
         </div>
     </article>

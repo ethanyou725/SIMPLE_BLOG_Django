@@ -9,6 +9,8 @@ from django.views.generic import ListView
 from django.views.generic import View
 from django.views.generic import FormView
 from django.views.generic.edit import FormMixin
+
+
 # Create your views here.
 
 # test
@@ -93,12 +95,15 @@ def hello(request):
 #
 #
 
-class AboutView(View):
+class AboutView(View): # 测试用的
     template_name = "test.html"
 
+from article.forms import SearchForm
 
-class BaseView(ListView):
+
+class BaseView(ListView,FormView):
     model = Article
+    form_class = SearchForm # 通用视图里显示搜索框
 
     def get_context_data(self, **kwargs):
         context = super(BaseView, self).get_context_data(**kwargs)
@@ -106,17 +111,35 @@ class BaseView(ListView):
         return context
 
 
-def search(request):
-    item_list = Article.objects.values('category', 'date_time')
-    keywords = request.GET.get("q")
-    if keywords.strip() == "":
-        return HttpResponseRedirect("/")
-    else:
-        post_list = Article.objects.filter(content__icontains=keywords.lower())
-        if len(post_list) == 0:
-            return render(request, 'index.html', {'post_list': post_list, 'none': True,'item_list':item_list})
-        else:
-            return render(request, 'index.html', {'post_list': post_list, 'none': False,'item_list':item_list})
+# def search(request):
+#     item_list = Article.objects.values('category', 'date_time')
+#     keywords = request.GET.get("q")
+#     if keywords.strip() == "":
+#         return HttpResponseRedirect("/")
+#     else:
+#         post_list = Article.objects.filter(content__icontains=keywords.lower())
+#         if len(post_list) == 0:
+#             return render(request, 'index.html', {'post_list': post_list, 'none': True, 'item_list': item_list})
+#         else:
+#             return render(request, 'index.html', {'post_list': post_list, 'none': False, 'item_list': item_list})
+
+
+
+
+class SearchView(BaseView, FormView,):
+    form_class = SearchForm
+    context_object_name = 'post_list'
+    template_name = 'index.html'
+
+
+    def get(self, request, *args, **kwargs):
+        form = SearchForm(self.request.GET or None)
+        if form.is_valid():
+            q = form.cleaned_data['q'].lower()
+            self.object_list = Article.objects.filter(content__icontains=q)
+        return self.render_to_response(self.get_context_data(form=form))
+
+
 
 #
 # class SearchView(BaseView):
@@ -142,10 +165,10 @@ class RSSFeed(Feed):
     link = "feeds/posts/"
     description = "RSS feed - blog posts"
 
-    def items(self):#按照时间降序
+    def items(self):  # 按照时间降序
         return Article.objects.order_by('-date_time')
 
-    def item_title(self, item): #rss标准写法,title,pubdate,description
+    def item_title(self, item):  # rss标准写法,title,pubdate,description
         return item.title
 
     def item_pubdate(self, item):
@@ -189,9 +212,8 @@ class CateView(BaseView):
     context_object_name = 'post_list'
 
     def get_queryset(self):
-        post=Article.objects.filter(category__iexact=self.args[0])
+        post = Article.objects.filter(category__iexact=self.args[0])
         return post
-
 
 # class DateView(BaseView):
 #     template_name = 'single.html'
@@ -217,9 +239,3 @@ class CateView(BaseView):
 #         except IndexError:
 #             raise Http404
 #         return obj
-
-
-
-
-
-

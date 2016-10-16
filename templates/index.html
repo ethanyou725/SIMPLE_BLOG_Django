@@ -35,10 +35,11 @@
     <div class="col-md-4 col-sm-5 col-xs-8 pull-right">
 
         {% if page_obj.has_previous %}
-        <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-default">PREV</a>
+
+        <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-default">&lt;&lt; PREV</a>
         {% endif %}
         {% if page_obj.has_next %}
-        <a href="?page={{ page_obj.next_page_number }}" class="btn btn-default">NEXT</a>
+        <a href="?page={{ page_obj.next_page_number }}" class="btn btn-default">NEXT &gt;&gt;</a>
         {% endif %}
         {% if is_paginated %}
         <button class="btn btn-default">{{ page_obj.number }}/{{ page_obj.paginator.num_pages }}</button>
