@@ -3,7 +3,7 @@
         <legend></legend>
         <!--<input type="text" class="form-control" placeholder="operator:AND NOT OR"  name="q">-->
         {{ form }}
-        {% csrf_token %}<!--不加csrf_token,搜索某些关键词会出错,比如'test'-->
+      <!--不加csrf_token,搜索某些关键词会出错,比如'test'-->
         <input type="submit" value="Search" class="btn btn-sm btn-default">
 
     </form>

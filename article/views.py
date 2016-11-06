@@ -108,6 +108,7 @@ class BaseView(ListView,FormView):
     def get_context_data(self, **kwargs):
         context = super(BaseView, self).get_context_data(**kwargs)
         context['item_list'] = Article.objects.values('category', 'date_time')
+        context['count']=Article.objects.count()
         return context
 
 
@@ -200,11 +201,14 @@ class SingleView(BaseView):
 
     def get_queryset(self):
         # post = get_object_or_404(Article, id=self.args[0])
+        # count=Article.objects.count()
         try:
             post = Article.objects.get(id=self.kwargs['id'])
+
         except:
             raise Http404
         return post
+
 
 
 class CateView(BaseView):
