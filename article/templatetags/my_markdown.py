@@ -1,3 +1,5 @@
+
+
 import markdown
 
 from django import template
@@ -11,6 +13,7 @@ register = template.Library()  #all the tags and filters are registered
 @stringfilter  #希望字符串作为参数
 def my_markdown(value):
     return mark_safe(markdown.markdown(value,
-        extensions = ['markdown.extensions.fenced_code', 'markdown.extensions.codehilite'],
+                                       extensions = ['markdown.extensions.fenced_code', 'markdown.extensions.codehilite'],
                                        safe_mode=True,
                                        enable_attributes=False))
+
