@@ -107,7 +107,7 @@ class BaseView(ListView,FormView):
 
     def get_context_data(self, **kwargs):
         context = super(BaseView, self).get_context_data(**kwargs)
-        context['item_list'] = Article.objects.values('category', 'date_time')
+        context['item_list'] = Article.objects.values('category','date_time').order_by('category').distinct()
         context['count']=Article.objects.count()
         return context
 

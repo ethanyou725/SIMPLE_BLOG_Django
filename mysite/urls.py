@@ -20,7 +20,7 @@ from article import views
 from article.views import RSSFeed
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
+    url(r'^hostadmin/', admin.site.urls),
     # url(r'^article/page(?P<a>\d+)/', views.g),
     url(r'^$', views.IndexView.as_view(), name='home'),
     # url(r'^post(?P<id>\d+)/$', views.detail, name='d'),
