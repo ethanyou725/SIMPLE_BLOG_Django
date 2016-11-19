@@ -14,6 +14,5 @@ register = template.Library()  #all the tags and filters are registered
 def my_markdown(value):
     return mark_safe(markdown.markdown(value,
                                        extensions = ['markdown.extensions.fenced_code', 'markdown.extensions.codehilite'],
-                                       safe_mode=True,
+                                       safe_mode=False,
                                        enable_attributes=False))
-
