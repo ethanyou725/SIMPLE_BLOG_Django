@@ -2,7 +2,7 @@
 {% load my_markdown %}
 {% block content%}
 <main class="col-md-8">
-  <div class="col-md-4 col-sm-5 col-xs-8 pull-right">
+  <div class="col-md-6 col-sm-7 col-xs-8 pull-right">
     <a href="{% url 'single' id=1  f='1'%}" class="btn btn-default">&lt;&lt;</a>
       {% ifnotequal post.id 1 %}
       <a href="{% url 'single' id=post.id|add:'-1'  f='p'%}" class="btn btn-default">&lt;&lt; PREV</a>
@@ -27,7 +27,7 @@
         <div class="entry-content clearfix">
             <p> {{post.content|my_markdown}}</p>
         </div>
-        <div class="col-md-4 col-sm-5 col-xs-8 pull-right">
+        <div class="col-md-6 col-sm-7 col-xs-8 pull-right">
             <a href="{% url 'single' id=1  f='1'%}" class="btn btn-success">&lt;&lt;</a>
             {% ifnotequal post.id 1 %}
             <a href="{% url 'single' id=post.id|add:'-1'  f='p'%}" class="btn btn-success">&lt;&lt; PREV</a>

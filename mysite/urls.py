@@ -35,4 +35,5 @@ urlpatterns = [
     url(r'test/$',views.AboutView.as_view()),
     url(r'category/(\w+)/$', views.CateView.as_view(), name='category'),
     # url(r'date/(\w+)/$', views.DateView.as_view(), name='title'),
+    url(r'ajax/$', views.ajax, name='ajax'),
 ]

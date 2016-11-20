@@ -141,22 +141,6 @@ class SearchView(BaseView, FormView,): #不能写反
         return self.render_to_response(self.get_context_data(form=form))
 
 
-
-#
-# class SearchView(BaseView):
-#     template_name = 'index.html'
-#     context_object_name = 'post_list'
-#
-#     def get_queryset(self):
-#         keyword=self.kwargs['q']
-#         if keyword and keyword.strip() != "":
-#             post_list = Article.objects.all()
-#         else:
-#             post_list = Article.object.filter(content__icontains=self.keyword.lower())
-#         return post_list
-
-
-
 '''Rss'''
 from django.contrib.syndication.views import Feed
 
@@ -224,27 +208,12 @@ class CateView(BaseView):
         post = Article.objects.filter(category__iexact=self.args[0])
         return post
 
-# class DateView(BaseView):
-#     template_name = 'single.html'
-#     context_object_name = 'post_list'
-#
-#     def get_queryset(self):
-#         post = Article.objects.filter(date_time=self.args[0])
-#         return post
-# class SearchView(DetailView):
-#     template_name = 'index.html'
-#     context_object_name = "post_list"
-#     model = Article
-#     keywords='keywords'
-#
-#     def get_object(self, queryset=None):
-#         # cnum = int(self.kwargs.get(self.pk_url_kwarg, None))
-#         keyword = self.kwargs.get(self.keywords, None)
-#
-#         queryset=Article.objects.filter(content__icontains=keyword)
-#
-#         try:
-#             obj = queryset
-#         except IndexError:
-#             raise Http404
-#         return obj
+
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+@csrf_exempt
+def ajax(request):
+    parameter = request.POST['content'] 
+    a=Article.objects.values('title').filter(title__icontains=parameter)
+    res_dict={'parameter':parameter,'result':"    ||    ".join(list(map(lambda x:x['title'],list(a))))}
+    return JsonResponse(res_dict)
