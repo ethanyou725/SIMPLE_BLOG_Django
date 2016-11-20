@@ -26,12 +26,14 @@
             <p> {{post.content|my_markdown}}</p>
         </div>
         <div class="col-md-4 col-sm-5 col-xs-8 pull-right">
+            <a href="{% url 'single' id=1  f='1'%}" class="btn btn-success">&lt;&lt;</a>
             {% ifnotequal post.id 1 %}
             <a href="{% url 'single' id=post.id|add:'-1'  f='p'%}" class="btn btn-success">&lt;&lt; PREV</a>
             {% endifnotequal %}
             {% ifnotequal post.id count %}
             <a href="{% url 'single' id=post.id|add:'1'  f='n'%}" class="btn btn-danger">NEXT &gt;&gt;</a>
             {% endifnotequal %}
+            <a href="{% url 'single' id=count  f='1'%}" class="btn btn-success">&lt;&lt;</a>
         </div>
     </article>
 
