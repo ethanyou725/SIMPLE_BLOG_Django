@@ -2,6 +2,14 @@
 {% load my_markdown %}
 {% block content%}
 <main class="col-md-8">
+  <div class="col-md-4 col-sm-5 col-xs-8 pull-right">
+      {% ifnotequal post.id 1 %}
+      <a href="{% url 'single' id=post.id|add:'-1'  f='p'%}" class="btn btn-default">&lt;&lt; PREV</a>
+      {% endifnotequal %}
+      {% ifnotequal post.id count %}
+      <a href="{% url 'single' id=post.id|add:'1'  f='n'%}" class="btn btn-default">NEXT &gt;&gt;</a>
+      {% endifnotequal %}
+  </div>
     <article class="post post-1">
         <header class="entry-header">
             <h1 class="entry-title">
@@ -19,10 +27,10 @@
         </div>
         <div class="col-md-4 col-sm-5 col-xs-8 pull-right">
             {% ifnotequal post.id 1 %}
-            <a href="{% url 'single' post.id|add:'-1' %}" class="btn btn-success">&lt;&lt; PREV</a>
+            <a href="{% url 'single' id=post.id|add:'-1'  f='p'%}" class="btn btn-success">&lt;&lt; PREV</a>
             {% endifnotequal %}
             {% ifnotequal post.id count %}
-            <a href="{% url 'single' post.id|add:'1' %}" class="btn btn-danger">NEXT &gt;&gt;</a>
+            <a href="{% url 'single' id=post.id|add:'1'  f='n'%}" class="btn btn-danger">NEXT &gt;&gt;</a>
             {% endifnotequal %}
         </div>
     </article>

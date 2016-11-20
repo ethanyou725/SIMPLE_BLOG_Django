@@ -24,7 +24,7 @@ urlpatterns = [
     # url(r'^article/page(?P<a>\d+)/', views.g),
     url(r'^$', views.IndexView.as_view(), name='home'),
     # url(r'^post(?P<id>\d+)/$', views.detail, name='d'),
-    url(r'^post/(?P<id>\d+)/$', views.SingleView.as_view(), name='single'),
+    url(r'^post/(?P<id>\d+)/(?P<f>.+)/$', views.SingleView.as_view(), name='single'),
     url(r'archive/$',views.ArchiveView.as_view(), name='archive'),
     # url(r'aboutme/$',views.about_me, name='about_me'),
     url(r'aboutme/$',views.AboutMeView.as_view(), name='about_me'),

@@ -108,7 +108,7 @@ class BaseView(ListView,FormView):
     def get_context_data(self, **kwargs):
         context = super(BaseView, self).get_context_data(**kwargs)
         context['item_list'] = Article.objects.values('category','date_time').order_by('category').distinct()
-        context['count']=Article.objects.count()
+        context['count']=Article.objects.latest('id').id
         return context
 
 
@@ -182,7 +182,7 @@ class RSSFeed(Feed):
 class IndexView(BaseView):
     template_name = 'index.html'
     context_object_name = 'post_list'
-    paginate_by = 10
+    paginate_by = 6
 
 
 class AboutMeView(BaseView):
@@ -198,17 +198,22 @@ class ArchiveView(BaseView):
 class SingleView(BaseView):
     template_name = 'single.html'
     context_object_name = 'post'
+    # id_query=list(Article.objects.values('id'))
+    id_list=list(map(lambda x:x['id'],list(Article.objects.values('id'))))
 
     def get_queryset(self):
         # post = get_object_or_404(Article, id=self.args[0])
         # count=Article.objects.count()
-        try:
-            post = Article.objects.get(id=self.kwargs['id'])
-
-        except:
-            raise Http404
-        return post
-
+        id=int(self.kwargs['id'])
+        f=self.kwargs['f']
+        post=None
+        while not post:
+            post = Article.objects.filter(id=id)
+            if f=='p':
+                id-=1
+            elif f=='n':
+                id+=1
+        return post[0]
 
 
 class CateView(BaseView):
