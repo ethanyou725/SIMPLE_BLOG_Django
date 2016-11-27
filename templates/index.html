@@ -1,9 +1,28 @@
 {% extends "base.html"%}
 {% load my_markdown %}
 {% block content%}
-<main class="col-md-8">
-    {% if none%}
 
+
+
+
+<main class="col-md-8">
+  <div class="col-md-4 col-sm-5 col-xs-8 pull-right">
+
+      {% if page_obj.has_previous %}
+
+      <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-default">&lt;&lt; PREV</a>
+      {% endif %}
+      {% if page_obj.has_next %}
+      <a href="?page={{ page_obj.next_page_number }}" class="btn btn-default">NEXT &gt;&gt;</a>
+      {% endif %}
+      {% if is_paginated %}
+      <button class="btn btn-default">{{ page_obj.number }}/{{ page_obj.paginator.num_pages }}</button>
+      {% endif %}
+
+  </div>
+
+
+    {% if none%}
     <h1 class="entry-title">
         <a>No Result!Sorry!</a>
     </h1>
