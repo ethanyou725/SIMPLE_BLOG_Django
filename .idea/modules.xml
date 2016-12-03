@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://D:/awesome-dota/.idea/awesome-dota2.iml" filepath="D:/awesome-dota/.idea/awesome-dota2.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/mysite.iml" filepath="$PROJECT_DIR$/.idea/mysite.iml" />
     </modules>
   </component>

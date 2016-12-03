@@ -45,11 +45,14 @@
             <!--<div class="read-more cl-effect-14">-->
             <!--<a href="#" class="more-link">Continue reading <span class="meta-nav">→</span></a>-->
             <!--</div>-->
+            <br>
+            <p style="text-align:center">
+                <a  href="{% url 'single' id=post.id  f='1'%}">- Read More -</a>
+            </p>
         </div>
         <p>
     </article>
-
-    <br/><br/>
+    <hr class="style-four">
     {% endfor %}
     <div class="col-md-4 col-sm-5 col-xs-8 pull-right">
 

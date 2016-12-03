@@ -105,6 +105,9 @@ class BaseView(ListView,FormView):
     model = Article
     form_class = SearchForm # 通用视图里显示搜索框
 
+    def get_queryset(self):
+        return Article.objects.all()
+
     def get_context_data(self, **kwargs):
         context = super(BaseView, self).get_context_data(**kwargs)
         context['item_list'] = Article.objects.values('category','date_time').order_by('category').distinct()
@@ -166,7 +169,7 @@ class RSSFeed(Feed):
 class IndexView(BaseView):
     template_name = 'index.html'
     context_object_name = 'post_list'
-    paginate_by = 6
+    paginate_by = 3
 
 
 class AboutMeView(BaseView):
@@ -213,7 +216,7 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 @csrf_exempt
 def ajax(request):
-    parameter = request.POST['content'] 
+    parameter = request.POST['content']
     a=Article.objects.values('title').filter(title__icontains=parameter)
     res_dict={'parameter':parameter,'result':"    ||    ".join(list(map(lambda x:x['title'],list(a))))}
     return JsonResponse(res_dict)
