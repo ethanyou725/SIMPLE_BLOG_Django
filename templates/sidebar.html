@@ -5,34 +5,25 @@
         {{ form }}
       <!--不加csrf_token,搜索某些关键词会出错,比如'test'-->
         <input type="submit" value="Search" class="btn btn-sm btn-default">
-
     </form>
-
      <div class="widget widget-category">
         <h3 class="widget-title">Category</h3>
         <ul>
-            {% for post in item_list%}
+            {% for post in cate_list%}
             {% if post.category %}
-            {% ifchanged %}<!--过滤相同标签-->
             <li><a href="{% url 'category' post.category%}" >{{post.category|lower}}</a></li>
-            {% endifchanged %}
             {% endif %}
             {% endfor %}
         </ul>
     </div>
-
     <div class="widget widget-recent-posts">
         <h3 class="widget-title">Recent Posts</h3>
         <ul>
-            {% for post in item_list%}
+            {% for post in time_list%}
             {% if post.date_time %}
-            {% ifchanged %}<!--过滤相同标签-->
             <li><a href="javascript:void(0)" >{{post.date_time|date:"Y-m-d"}}</a></li>
-            {% endifchanged %}
             {% endif %}
             {% endfor %}
         </ul>
     </div>
-
-
 </aside>

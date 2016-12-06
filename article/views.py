@@ -107,8 +107,10 @@ class BaseView(ListView,FormView):
 
     def get_context_data(self, **kwargs):
         context = super(BaseView, self).get_context_data(**kwargs)
-        context['item_list'] = Article.objects.values('category','date_time').order_by('category').distinct()
-        context['count']=Article.objects.latest('id').id
+        context['cate_list'] = Article.objects.values('category').order_by('category').distinct() #去重
+        context['time_list'] = Article.objects.values('date_time').order_by('date_time').distinct().reverse()[:10] #去重,reverse,取10条
+
+        context['count']=Article.objects.latest('id').id##最后文章的id
         return context
 
 
@@ -205,7 +207,7 @@ class CateView(BaseView):
     context_object_name = 'post_list'
 
     def get_queryset(self):
-        post = Article.objects.filter(category__iexact=self.args[0])
+        post = Article.objects.filter(category__iexact=self.args[0]).reverse()[:10]
         return post
 
 
@@ -213,7 +215,7 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 @csrf_exempt
 def ajax(request):
-    parameter = request.POST['content'] 
+    parameter = request.POST['content']
     a=Article.objects.values('title').filter(title__icontains=parameter)
     res_dict={'parameter':parameter,'result':"    ||    ".join(list(map(lambda x:x['title'],list(a))))}
     return JsonResponse(res_dict)
