@@ -7,7 +7,7 @@
  {% for post in archive_list%}
     <article class="post post-1">
         <h3 >
-            <a href="{% url 'single' post.id%}">{{post.title}}</a>
+            <a href="{% url 'single' id=post.id  f='1'%}">{{post.title}}</a>
             <span class="entry-meta">
                 <a href="javascript:void(0)">{{post.category}}</a>
                 <a href="javascript:void(0)">{{post.date_time|date:"Y/m/d"}}</a>
@@ -17,7 +17,3 @@
     {% endfor %}
 </main>
 {% endblock %}
-
-
-
-
