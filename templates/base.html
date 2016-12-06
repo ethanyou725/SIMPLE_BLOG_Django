@@ -17,6 +17,22 @@
     <script src="/static/js/pace.min.js"></script>
     <script src="/static/js/modernizr.custom.js"></script>
     <script src="/static/js/vue.js"></script>
+    <style media="screen">
+    hr.style-four {
+    height: 12px;
+    border: 0;
+    box-shadow: inset 0 12px 12px -12px rgba(0, 0, 0, 0.5);
+}
+
+    hr.style-five {
+    border: 0;
+    height: 0; /* Firefox... */
+    box-shadow: 0 0 10px 1px black;
+}
+hr.style-five:after {  /* Not really supposed to work, but does */
+    content: "\00a0";  /* Prevent margin collapse */
+}
+    </style>
 </head>
 
 <body>

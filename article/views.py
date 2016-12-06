@@ -105,6 +105,9 @@ class BaseView(ListView,FormView):
     model = Article
     form_class = SearchForm # 通用视图里显示搜索框
 
+    def get_queryset(self):
+        return Article.objects.all()
+
     def get_context_data(self, **kwargs):
         context = super(BaseView, self).get_context_data(**kwargs)
         context['cate_list'] = Article.objects.values('category').order_by('category').distinct() #去重
@@ -168,7 +171,7 @@ class RSSFeed(Feed):
 class IndexView(BaseView):
     template_name = 'index.html'
     context_object_name = 'post_list'
-    paginate_by = 6
+    paginate_by = 3
 
 
 class AboutMeView(BaseView):
