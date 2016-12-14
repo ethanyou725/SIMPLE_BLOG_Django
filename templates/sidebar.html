@@ -3,27 +3,24 @@
         <legend></legend>
         <!--<input type="text" class="form-control" placeholder="operator:AND NOT OR"  name="q">-->
         {{ form }}
-      <!--不加csrf_token,搜索某些关键词会出错,比如'test'-->
+        <!--不加csrf_token,搜索某些关键词会出错,比如'test'-->
         <input type="submit" value="Search" class="btn btn-sm btn-default">
     </form>
-     <div class="widget widget-category">
+    <br>
+    <div class="widget widget-category">
         <h3 class="widget-title">Category</h3>
         <ul>
-            {% for post in cate_list%}
-            {% if post.category %}
-            <li><a href="{% url 'category' post.category%}" >{{post.category|lower}}</a></li>
-            {% endif %}
-            {% endfor %}
+            {% for post in cate_list%} {% if post.category %}
+            <li><a href="{% url 'category' post.category%}">{{post.category|lower}}</a></li>
+            {% endif %} {% endfor %}
         </ul>
     </div>
     <div class="widget widget-recent-posts">
         <h3 class="widget-title">Recent Posts</h3>
         <ul>
-            {% for post in time_list%}
-            {% if post.date_time %}
-            <li><a href="javascript:void(0)" >{{post.date_time|date:"Y-m-d"}}</a></li>
-            {% endif %}
-            {% endfor %}
+            {% for post in time_list%} {% if post.date_time %}
+            <li><a href="javascript:void(0)">{{post.date_time|date:"Y-m-d"}}</a></li>
+            {% endif %} {% endfor %}
         </ul>
     </div>
 </aside>
