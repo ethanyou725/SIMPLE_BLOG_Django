@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+test2
+<input type="button" value="click1" id="a"> <br>
+<input type="button" value="click2" id="b">
+</body>
+<script>
+    var req = new XMLHttpRequest();
+    var obj = document.querySelectorAll('input');
+    console.log(obj[0],obj[1]);
+
+    obj[0].addEventListener('click',function(){
+        req.open('GET','/articles/');
+        req.onreadystatechange = function () {
+            if (req.readyState == 4) {
+                if (req.status == 200) {
+                    console.log('success');
+                    console.log(JSON.parse(req.responseText));
+                    console.log(req.responseText)
+                } else {
+                    console.log(req.status)
+                }
+            }
+        };
+        req.send(null);
+    });
+    obj[1].addEventListener('click',function(){
+        req.open('GET','/articles/1');
+        req.onreadystatechange = function () {
+            if (req.readyState == 4) {
+                if (req.status == 200) {
+                    console.log('success');
+//                    console.log(JSON.parse(req.responseText));
+                    console.log(req.responseText)
+                } else {
+                    console.log(req.status)
+                }
+            }
+        };
+        req.send(null);
+    })
+
+</script>
+</html>

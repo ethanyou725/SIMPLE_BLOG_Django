@@ -1,16 +1,21 @@
 from django.http import Http404
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse,JsonResponse
 from django.shortcuts import get_object_or_404
 from django.views.generic import DetailView
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from rest_framework import status
 from article.models import Article
 from django.views.generic import ListView
 from django.views.generic import View
 from django.views.generic import FormView
 from django.views.generic.edit import FormMixin
-
-
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+import json
 # Create your views here.
 
 # test
@@ -95,130 +100,193 @@ def hello(request):
 #
 #
 
-class AboutView(View): # 测试用的
-    template_name = "test.html"
+# class AboutView(View): # 测试用的
+#     template_name = "test.html"
+#
+# from article.forms import SearchForm
+#
+#
+# class BaseView(ListView,FormView):
+#     model = Article
+#     form_class = SearchForm # 通用视图里显示搜索框
+#
+#     def get_queryset(self):
+#         return Article.objects.all()
+#
+#     def get_context_data(self, **kwargs):
+#         context = super(BaseView, self).get_context_data(**kwargs)
+#         context['cate_list'] = Article.objects.values('category').order_by('category').distinct() #去重
+#         context['time_list'] = Article.objects.values('date_time').order_by('date_time').distinct().reverse()[:10] #去重,reverse,取10条
+#
+#         context['count']=Article.objects.latest('id').id##最后文章的id
+#         return context
+#
+#
+# # def search(request):
+# #     item_list = Article.objects.values('category', 'date_time')
+# #     keywords = request.GET.get("q")
+# #     if keywords.strip() == "":
+# #         return HttpResponseRedirect("/")
+# #     else:
+# #         post_list = Article.objects.filter(content__icontains=keywords.lower())
+# #         if len(post_list) == 0:
+# #             return render(request, 'index.html', {'post_list': post_list, 'none': True, 'item_list': item_list})
+# #         else:
+# #             return render(request, 'index.html', {'post_list': post_list, 'none': False, 'item_list': item_list})
+#
+#
+#
+#
+# class SearchView(BaseView, FormView,): #不能写反
+#     form_class = SearchForm
+#     context_object_name = 'post_list'
+#     template_name = 'index.html'
+#
+#
+#     def get(self, request, *args, **kwargs):
+#         form = SearchForm(self.request.GET or None)
+#         if form.is_valid():
+#             q = form.cleaned_data['q'].lower()
+#             self.object_list = Article.objects.filter(content__icontains=q)
+#         return self.render_to_response(self.get_context_data(form=form))
+#
+#
+# '''Rss'''
+# from django.contrib.syndication.views import Feed
+#
+#
+# class RSSFeed(Feed):
+#     title = "RSS feed - article"
+#     link = "feeds/posts/"
+#     description = "RSS feed - blog posts"
+#
+#     def items(self):  # 按照时间降序
+#         return Article.objects.order_by('-date_time')
+#
+#     def item_title(self, item):  # rss标准写法,title,pubdate,description
+#         return item.title
+#
+#     def item_pubdate(self, item):
+#         return item.date_time
+#
+#     def item_description(self, item):
+#         return item.content
+#
+#
+# class IndexView(BaseView):
+#     template_name = 'index.html'
+#     context_object_name = 'post_list'
+#     paginate_by = 3
+#
+#
+# class AboutMeView(BaseView):
+#     template_name = 'about_me.html'
+#
+#
+# class ArchiveView(BaseView):
+#     template_name = 'archive.html'
+#     queryset = Article.objects.all()
+#     context_object_name = 'archive_list'
+#
+#
+# class SingleView(BaseView):
+#     template_name = 'single.html'
+#     context_object_name = 'post'
+#     # id_query=list(Article.objects.values('id'))
+#     id_list=list(map(lambda x:x['id'],list(Article.objects.values('id'))))
+#
+#     def get_queryset(self):
+#         # post = get_object_or_404(Article, id=self.args[0])
+#         # count=Article.objects.count()
+#         id=int(self.kwargs['id'])
+#         f=self.kwargs['f']
+#         post=None
+#         while not post:
+#             post = Article.objects.filter(id=id)
+#             if f=='p':
+#                 id-=1
+#             elif f=='n':
+#                 id+=1
+#         return post[0]
+#
+#
+# class CateView(BaseView):
+#     template_name = 'index.html'
+#     context_object_name = 'post_list'
+#
+#     def get_queryset(self):
+#         post = Article.objects.filter(category__iexact=self.args[0]).reverse()[:10]
+#         return post
+#
+#
+#
+# @csrf_exempt
+# def ajax(request):
+#     parameter = request.POST['content']
+#     a=Article.objects.values('title').filter(title__icontains=parameter)
+#     res_dict={'parameter':parameter,'result':"    ||    ".join(list(map(lambda x:x['title'],list(a))))}
+#     return JsonResponse(res_dict)
 
-from article.forms import SearchForm
-
-
-class BaseView(ListView,FormView):
-    model = Article
-    form_class = SearchForm # 通用视图里显示搜索框
-
-    def get_queryset(self):
-        return Article.objects.all()
-
-    def get_context_data(self, **kwargs):
-        context = super(BaseView, self).get_context_data(**kwargs)
-        context['cate_list'] = Article.objects.values('category').order_by('category').distinct() #去重
-        context['time_list'] = Article.objects.values('date_time').order_by('date_time').distinct().reverse()[:10] #去重,reverse,取10条
-
-        context['count']=Article.objects.latest('id').id##最后文章的id
-        return context
-
-
-# def search(request):
-#     item_list = Article.objects.values('category', 'date_time')
-#     keywords = request.GET.get("q")
-#     if keywords.strip() == "":
-#         return HttpResponseRedirect("/")
-#     else:
-#         post_list = Article.objects.filter(content__icontains=keywords.lower())
-#         if len(post_list) == 0:
-#             return render(request, 'index.html', {'post_list': post_list, 'none': True, 'item_list': item_list})
-#         else:
-#             return render(request, 'index.html', {'post_list': post_list, 'none': False, 'item_list': item_list})
 
 
 
 
-class SearchView(BaseView, FormView,): #不能写反
-    form_class = SearchForm
-    context_object_name = 'post_list'
-    template_name = 'index.html'
+'''restful'''
+from rest_framework.renderers import  JSONRenderer
+from rest_framework.parsers import JSONParser
+from .serializers import ArticleSerializer
+
+# class JSONResponse(HttpResponse):
+#     def __int__(self,data,**kwargs):
+#         content = JSONRenderer.render(data=data)
+#         # kwargs['content_type']= 'application/json'
+#         super(JSONResponse,self).__init__(content,**kwargs)
+
+@api_view(['GET', 'POST'])
+def article_list(request, format=None):
+    if request.method =='GET':
+        articles = Article.objects.all()
+        serializer = ArticleSerializer(articles,many=True)
+        return HttpResponse(json.dumps(serializer.data))
+
+    # elif request.method == 'POST':
+    #     data = JSONParser().parse(request)
+    #     serializer = ArticleSerializer(data = data)
+    #     if serializer.is_valid():
+    #         serializer.save()
+    #         return JSONResponse(serializer.data,status=201)
+    #     else:
+    #         return JSONResponse(serializer.errors, status=400)
 
 
-    def get(self, request, *args, **kwargs):
-        form = SearchForm(self.request.GET or None)
-        if form.is_valid():
-            q = form.cleaned_data['q'].lower()
-            self.object_list = Article.objects.filter(content__icontains=q)
-        return self.render_to_response(self.get_context_data(form=form))
-
-
-'''Rss'''
-from django.contrib.syndication.views import Feed
-
-
-class RSSFeed(Feed):
-    title = "RSS feed - article"
-    link = "feeds/posts/"
-    description = "RSS feed - blog posts"
-
-    def items(self):  # 按照时间降序
-        return Article.objects.order_by('-date_time')
-
-    def item_title(self, item):  # rss标准写法,title,pubdate,description
-        return item.title
-
-    def item_pubdate(self, item):
-        return item.date_time
-
-    def item_description(self, item):
-        return item.content
-
-
-class IndexView(BaseView):
-    template_name = 'index.html'
-    context_object_name = 'post_list'
-    paginate_by = 3
-
-
-class AboutMeView(BaseView):
-    template_name = 'about_me.html'
-
-
-class ArchiveView(BaseView):
-    template_name = 'archive.html'
-    queryset = Article.objects.all()
-    context_object_name = 'archive_list'
-
-
-class SingleView(BaseView):
-    template_name = 'single.html'
-    context_object_name = 'post'
-    # id_query=list(Article.objects.values('id'))
-    id_list=list(map(lambda x:x['id'],list(Article.objects.values('id'))))
-
-    def get_queryset(self):
-        # post = get_object_or_404(Article, id=self.args[0])
-        # count=Article.objects.count()
-        id=int(self.kwargs['id'])
-        f=self.kwargs['f']
-        post=None
-        while not post:
-            post = Article.objects.filter(id=id)
-            if f=='p':
-                id-=1
-            elif f=='n':
-                id+=1
-        return post[0]
-
-
-class CateView(BaseView):
-    template_name = 'index.html'
-    context_object_name = 'post_list'
-
-    def get_queryset(self):
-        post = Article.objects.filter(category__iexact=self.args[0]).reverse()[:10]
-        return post
-
-
-from django.http import JsonResponse
-from django.views.decorators.csrf import csrf_exempt
 @csrf_exempt
-def ajax(request):
-    parameter = request.POST['content']
-    a=Article.objects.values('title').filter(title__icontains=parameter)
-    res_dict={'parameter':parameter,'result':"    ||    ".join(list(map(lambda x:x['title'],list(a))))}
-    return JsonResponse(res_dict)
+@api_view(['GET', 'PUT', 'DELETE'])
+def article_detail(request, id ,format=None):
+    """
+    Retrieve, update or delete a code snippet.
+    """
+    try:
+        article = Article.objects.get(id=id)
+    except Article.DoesNotExist:
+        # raise Http404
+        return render(request,'error.html')
+
+    if request.method == 'GET':
+        serializer = ArticleSerializer(article)
+        return Response(json.dumps(serializer.data))
+
+    elif request.method == 'PUT':
+        data = JSONParser().parse(request)
+        serializer = ArticleSerializer(article, data=data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        else:
+            return Response(serializer.errors, status=400)
+
+    elif request.method == 'DELETE':
+        article.delete()
+        return HttpResponse(status=204)
+
+
+
