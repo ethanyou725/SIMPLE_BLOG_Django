@@ -3,7 +3,7 @@ from article.models import Article
 from datetime import datetime
 
 
-class ArticleSerializer(serializers.Serializer):
+class ArticleSerializer(serializers.HyperlinkedModelSerializer):
     id = serializers.CharField(read_only=True)
     title = serializers.CharField(required=True,max_length=100)
     category = serializers.CharField(max_length=50)
@@ -26,4 +26,15 @@ class ArticleSerializer(serializers.Serializer):
     class Meta:
         model = Article
         fields = ('id','title','category','date_time','content')
+
+
+
+# from django.contrib.auth.models import User
+
+# class UserSerializer(serializers.ModelSerializer):
+#     author = serializers.PrimaryKeyRelatedField(many=True, queryset=Article.objects.all())
+
+#     class Meta:
+#         model = User
+#         fields = '__all__'
 

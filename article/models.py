@@ -9,6 +9,8 @@ class Article(models.Model):
     category = models.CharField(max_length=50)  # 标签
     date_time = models.DateTimeField(auto_now_add=True)  # 日期
     content = models.TextField()  # 内容
+    # author = models.ForeignKey('auth.User',related_name='articles',on_delete=models.CASCADE)
+
 
     def __str__(self):
         return self.title
@@ -21,20 +23,3 @@ class Article(models.Model):
         ordering = ['id']
 
 
-# class Author(models.Model):
-#     name = models.CharField(max_length=50)
-#     age = models.IntegerField()
-#
-#     def __str__(self):
-#         return self.name
-#
-#
-# class Blog(models.Model):
-#     title = models.CharField(max_length=50)
-#     content = models.TextField
-#     counter = models.IntegerField(default=0)  # 访问数量
-#     pubDate = models.DateField(auto_now_add=True)
-#     author = models.ForeignKey(Author)
-#
-#     def __str__(self):
-#         return self.title

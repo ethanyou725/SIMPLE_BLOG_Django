@@ -1,21 +1,15 @@
 from django.http import Http404
-from django.http import HttpResponseRedirect
-from django.shortcuts import render
-from django.http import HttpResponse,JsonResponse
-from django.shortcuts import get_object_or_404
-from django.views.generic import DetailView
-from rest_framework.decorators import api_view
+# from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status
 from article.models import Article
-from django.views.generic import ListView
-from django.views.generic import View
-from django.views.generic import FormView
-from django.views.generic.edit import FormMixin
-from django.http import JsonResponse
-from django.views.decorators.csrf import csrf_exempt
 import json
+from rest_framework.views import APIView
+from rest_framework import generics
+from .serializers import ArticleSerializer
+from rest_framework import viewsets
+from rest_framework import permissions
 # Create your views here.
 
 # test
@@ -23,202 +17,7 @@ def hello(request):
     return HttpResponse("<h1>Hello Django</h1>")
 
 
-# def g(request, a):
-#     return HttpResponse("article pages %s." % a)
 
-
-# test
-# def test(request):
-#     context = {'current_time': datetime.now()}
-#     return render(request, 'test.html', context)
-
-
-# def home(request):
-#     posts = Article.objects.all()
-#     paginator = Paginator(posts, 2)
-#     page = request.GET.get('page')
-#     try:
-#         post_list=paginator.page(page)
-#     except PageNotAnInteger :
-#         post_list=paginator.page(1)# If page is not an integer, deliver first page.
-#     except  EmptyPage :
-#         post_list = paginator.paginator(paginator.num_pages) # If page is out of range (e.g. 9999), deliver last page of results.
-#     return render(request, 'index.html', {'post_list': post_list})
-
-
-# def show_list(req):
-#     title_list=Article.objects.values("title")[0:5]
-#     category_list = Article.objects.values("category")
-#     return render(req, 'sidebar.html',{'title_list': title_list, 'category_list': category_list})
-
-
-# def detail(request, id):
-#     item_list= Article.objects.values('category', 'date_time')
-#     try:
-#         post = Article.objects.get(id=str(id))
-#         count = Article.objects.all().count()
-#
-#     except Article.DoesNotExist:
-#         raise Http404
-#     return render(request, 'single.html', {'post': post, 'count': count,'item_list':item_list})
-
-
-# def archive(request):
-#     try:
-#         archive_list = Article.objects.all()
-#     except Article.DoesNotExist:
-#         raise Http404
-#     return render(request, 'archive.html', {"archive_list": archive_list})
-
-
-# def about_me(request):
-#     return render(request, 'about_me.html')
-
-
-# def category(request, category): #根据category查找
-#     try:
-#         post_list = Article.objects.filter(category__iexact=category)
-#     except:
-#         raise Http404
-#     return render(request, 'index.html', {'post_list': post_list})
-
-
-# def time(request, time): #根据date_time查找
-#     try:
-#         post_list = Article.objects.filter(date_time__iexact=time)
-#     except:
-#         raise Http404
-#     return render(request, 'index.html', {'post_list': post_list})
-#
-#
-# def tag(request, category):
-#     try:
-#         post_list = Article.objects.filter(category__iexact=category)
-#     except:
-#         raise Http404
-#     return render(request, 'category.html', {'post_list': post_list})
-#
-#
-
-# class AboutView(View): # 测试用的
-#     template_name = "test.html"
-#
-# from article.forms import SearchForm
-#
-#
-# class BaseView(ListView,FormView):
-#     model = Article
-#     form_class = SearchForm # 通用视图里显示搜索框
-#
-#     def get_queryset(self):
-#         return Article.objects.all()
-#
-#     def get_context_data(self, **kwargs):
-#         context = super(BaseView, self).get_context_data(**kwargs)
-#         context['cate_list'] = Article.objects.values('category').order_by('category').distinct() #去重
-#         context['time_list'] = Article.objects.values('date_time').order_by('date_time').distinct().reverse()[:10] #去重,reverse,取10条
-#
-#         context['count']=Article.objects.latest('id').id##最后文章的id
-#         return context
-#
-#
-# # def search(request):
-# #     item_list = Article.objects.values('category', 'date_time')
-# #     keywords = request.GET.get("q")
-# #     if keywords.strip() == "":
-# #         return HttpResponseRedirect("/")
-# #     else:
-# #         post_list = Article.objects.filter(content__icontains=keywords.lower())
-# #         if len(post_list) == 0:
-# #             return render(request, 'index.html', {'post_list': post_list, 'none': True, 'item_list': item_list})
-# #         else:
-# #             return render(request, 'index.html', {'post_list': post_list, 'none': False, 'item_list': item_list})
-#
-#
-#
-#
-# class SearchView(BaseView, FormView,): #不能写反
-#     form_class = SearchForm
-#     context_object_name = 'post_list'
-#     template_name = 'index.html'
-#
-#
-#     def get(self, request, *args, **kwargs):
-#         form = SearchForm(self.request.GET or None)
-#         if form.is_valid():
-#             q = form.cleaned_data['q'].lower()
-#             self.object_list = Article.objects.filter(content__icontains=q)
-#         return self.render_to_response(self.get_context_data(form=form))
-#
-#
-# '''Rss'''
-# from django.contrib.syndication.views import Feed
-#
-#
-# class RSSFeed(Feed):
-#     title = "RSS feed - article"
-#     link = "feeds/posts/"
-#     description = "RSS feed - blog posts"
-#
-#     def items(self):  # 按照时间降序
-#         return Article.objects.order_by('-date_time')
-#
-#     def item_title(self, item):  # rss标准写法,title,pubdate,description
-#         return item.title
-#
-#     def item_pubdate(self, item):
-#         return item.date_time
-#
-#     def item_description(self, item):
-#         return item.content
-#
-#
-# class IndexView(BaseView):
-#     template_name = 'index.html'
-#     context_object_name = 'post_list'
-#     paginate_by = 3
-#
-#
-# class AboutMeView(BaseView):
-#     template_name = 'about_me.html'
-#
-#
-# class ArchiveView(BaseView):
-#     template_name = 'archive.html'
-#     queryset = Article.objects.all()
-#     context_object_name = 'archive_list'
-#
-#
-# class SingleView(BaseView):
-#     template_name = 'single.html'
-#     context_object_name = 'post'
-#     # id_query=list(Article.objects.values('id'))
-#     id_list=list(map(lambda x:x['id'],list(Article.objects.values('id'))))
-#
-#     def get_queryset(self):
-#         # post = get_object_or_404(Article, id=self.args[0])
-#         # count=Article.objects.count()
-#         id=int(self.kwargs['id'])
-#         f=self.kwargs['f']
-#         post=None
-#         while not post:
-#             post = Article.objects.filter(id=id)
-#             if f=='p':
-#                 id-=1
-#             elif f=='n':
-#                 id+=1
-#         return post[0]
-#
-#
-# class CateView(BaseView):
-#     template_name = 'index.html'
-#     context_object_name = 'post_list'
-#
-#     def get_queryset(self):
-#         post = Article.objects.filter(category__iexact=self.args[0]).reverse()[:10]
-#         return post
-#
-#
 #
 # @csrf_exempt
 # def ajax(request):
@@ -231,62 +30,147 @@ def hello(request):
 
 
 
-'''restful'''
-from rest_framework.renderers import  JSONRenderer
-from rest_framework.parsers import JSONParser
-from .serializers import ArticleSerializer
-
-# class JSONResponse(HttpResponse):
-#     def __int__(self,data,**kwargs):
-#         content = JSONRenderer.render(data=data)
-#         # kwargs['content_type']= 'application/json'
-#         super(JSONResponse,self).__init__(content,**kwargs)
-
-@api_view(['GET', 'POST'])
-def article_list(request, format=None):
-    if request.method =='GET':
-        articles = Article.objects.all()
-        serializer = ArticleSerializer(articles,many=True)
-        return HttpResponse(json.dumps(serializer.data))
-
-    # elif request.method == 'POST':
-    #     data = JSONParser().parse(request)
-    #     serializer = ArticleSerializer(data = data)
-    #     if serializer.is_valid():
-    #         serializer.save()
-    #         return JSONResponse(serializer.data,status=201)
-    #     else:
-    #         return JSONResponse(serializer.errors, status=400)
+# '''restful'''
+# from rest_framework.renderers import  JSONRenderer
+# from rest_framework.parsers import JSONParser
 
 
-@csrf_exempt
-@api_view(['GET', 'PUT', 'DELETE'])
-def article_detail(request, id ,format=None):
-    """
-    Retrieve, update or delete a code snippet.
-    """
-    try:
-        article = Article.objects.get(id=id)
-    except Article.DoesNotExist:
-        # raise Http404
-        return render(request,'error.html')
+# @api_view(['GET', 'POST'])
+# def article_list(request, format=None):
+#     if request.method =='GET':
+#         articles = Article.objects.all()
+#         serializer = ArticleSerializer(articles,many=True)
+#         return Response(serializer.data)
 
-    if request.method == 'GET':
+#     elif request.method == 'POST':
+#         data = JSONParser().parse(request)
+#         serializer = ArticleSerializer(data = data)
+#         if serializer.is_valid():
+#             serializer.save()
+#             return JSONResponse(serializer.data,status=201)
+#         else:
+#             return JSONResponse(serializer.errors, status=400)
+
+
+# @csrf_exempt
+# @api_view(['GET', 'PUT', 'DELETE'])
+# def article_detail(request, id ,format=None):
+#     """
+#     Retrieve, update or delete a code Article.
+#     """
+#     try:
+#         article = Article.objects.get(id=id)
+#     except Article.DoesNotExist:
+#         # raise Http404
+#         return render(request,'error.html')
+
+#     if request.method == 'GET':
+#         serializer = ArticleSerializer(article)
+#         return Response(json.dumps(serializer.data))
+
+#     elif request.method == 'PUT':
+#         data = JSONParser().parse(request)
+#         serializer = ArticleSerializer(article, data=data)
+#         if serializer.is_valid():
+#             serializer.save()
+#             return Response(serializer.data)
+#         else:
+#             return Response(serializer.errors, status=400)
+
+#     elif request.method == 'DELETE':
+#         article.delete()
+#         return HttpResponse(status=204)
+
+
+
+
+
+# 
+
+# class ArticleList(APIView):
+     
+#     permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+    
+#     def get(self, request, format=None):
+#         articles = Article.objects.all()
+#         serializer = ArticleSerializer(articles, many=True)
+#         return Response(serializer.data)
+
+#     def post(self, request, format=None):
+#         serializer = ArticleSerializer(data=request.data)
+#         if serializer.is_valid():
+#             serializer.save()
+#             return Response(serializer.data, status=status.HTTP_201_CREATED)
+#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+#     def perform_create(self,serilizer):
+#         serilizer.save(author=self.request.user)
+
+
+# class ArticleDetail(APIView):
+   
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+
+    def get_object(self, pk):
+        try:
+            return Article.objects.get(pk=pk)
+        except Article.DoesNotExist:
+            raise Http404
+
+    def get(self, request, pk, format=None):
+        article = self.get_object(pk)
         serializer = ArticleSerializer(article)
-        return Response(json.dumps(serializer.data))
+        return Response(serializer.data)
 
-    elif request.method == 'PUT':
-        data = JSONParser().parse(request)
-        serializer = ArticleSerializer(article, data=data)
+    def put(self, request, pk, format=None):
+        article = self.get_object(pk)
+        serializer = ArticleSerializer(article, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
-        else:
-            return Response(serializer.errors, status=400)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    elif request.method == 'DELETE':
+    def delete(self, request, pk, format=None):
+        article = self.get_object(pk)
         article.delete()
-        return HttpResponse(status=204)
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 
+# from django.contrib.auth.models import User
+# from .serializers import UserSerializer
 
+# class UserList(generics.ListAPIView):
+#     queryset = User.objects.all()
+#     serializer_class = UserSerializer
+
+
+# class UserDetail(generics.RetrieveAPIView):
+#     queryset = User.objects.all()
+#     serializer_class = UserSerializer
+
+'''
+class ArticleList(generics.ListCreateAPIView):
+    queryset = Article.objects.all()
+    serializer_class =ArticleSerializer
+
+
+class ArticleDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Article.objects.all()
+    serializer_class = ArticleSerializer
+
+'''
+
+from rest_framework.decorators import detail_route
+
+class ArticleViewSet(viewsets.ReadOnlyModelViewSet):
+    
+
+    queryset = Article.objects.all()
+    serializer_class = ArticleSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+
+
+    @detail_route()
+    def detail(self,req,*args,**kwargs):
+        article = self.get_object()
+        return Response(article)
