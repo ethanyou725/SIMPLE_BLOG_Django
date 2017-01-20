@@ -103,7 +103,7 @@ REST_FRAMEWORK = {
         # 'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
         'rest_framework.permissions.IsAuthenticated',
     ],
-    'PAGE_SIZE':5
+    'PAGE_SIZE':10
 }
 
 
