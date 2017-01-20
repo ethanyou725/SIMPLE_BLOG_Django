@@ -7,7 +7,7 @@ from article.models import Article
 import json
 from rest_framework.views import APIView
 from rest_framework import generics
-from .serializers import ArticleSerializer
+from .serializers import ArticleDetailSerializer,ArticleListSerializer
 from rest_framework import viewsets
 from rest_framework import permissions
 # Create your views here.
@@ -106,8 +106,8 @@ def hello(request):
 #     def perform_create(self,serilizer):
 #         serilizer.save(author=self.request.user)
 
-
-# class ArticleDetail(APIView):
+'''
+class ArticleDetail(APIView):
    
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
@@ -134,7 +134,7 @@ def hello(request):
         article = self.get_object(pk)
         article.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
-
+'''
 
 # from django.contrib.auth.models import User
 # from .serializers import UserSerializer
@@ -162,11 +162,11 @@ class ArticleDetail(generics.RetrieveUpdateDestroyAPIView):
 
 from rest_framework.decorators import detail_route
 
-class ArticleViewSet(viewsets.ReadOnlyModelViewSet):
-    
+class ArticleDetailViewSet(viewsets.ReadOnlyModelViewSet):
 
-    queryset = Article.objects.all()
-    serializer_class = ArticleSerializer
+    queryset = Article.objects.values("id","title","category","date_time","content")
+    # queryset = Article.objects.all()
+    serializer_class = ArticleDetailSerializer
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
 
@@ -174,3 +174,14 @@ class ArticleViewSet(viewsets.ReadOnlyModelViewSet):
     def detail(self,req,*args,**kwargs):
         article = self.get_object()
         return Response(article)
+
+
+class ArticleListViewSet(viewsets.ReadOnlyModelViewSet):
+    
+    queryset = Article.objects.values("id","title","category","date_time")
+    # queryset = Article.objects.all()
+    serializer_class = ArticleListSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+
+
+    

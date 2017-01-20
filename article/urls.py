@@ -13,10 +13,10 @@ from rest_framework.routers import DefaultRouter
 # ]
 
 
-article_list = views.ArticleViewSet.as_view({
+article_list = views.ArticleListViewSet.as_view({
     'get':"list"
 })
-article_detail = views.ArticleViewSet.as_view({
+article_detail = views.ArticleDetailViewSet.as_view({
     'get': 'retrieve',
     # 'put': 'update',
     # 'patch': 'partial_update',
@@ -24,7 +24,7 @@ article_detail = views.ArticleViewSet.as_view({
 })
 
 router = DefaultRouter()
-router.register(r'articles', views.ArticleViewSet)
+router.register(r'articles', views.ArticleDetailViewSet)
 
 
 urlpatterns = [
