@@ -13,6 +13,7 @@ schema_view = get_schema_view(title='Pastebin API')
 urlpatterns = [
     # url(r'^index/$',TemplateView.as_view(template_name ='test2.html')),
     url(r'^', include('article.urls')),
+    url(r'^$', TemplateView.as_view(template_name ='index.html')),
     url(r'^hostadmin/', admin.site.urls),
     url('^schema/$', schema_view),
 ]
