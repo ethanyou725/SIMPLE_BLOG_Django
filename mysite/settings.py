@@ -54,9 +54,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
-# CORS_ORIGIN_ALLOW_ALL =True
-CORS_ORIGIN_WHITELIST= ['127.0.0.1:8111']
+CORS_ORIGIN_ALLOW_ALL =True
+CORS_ORIGIN_WHITELIST= ['127.0.0.1:8080','127.0.0.1:8111']
 
 # CORS_ALLOW_HEADERS = (
 #     'accept',

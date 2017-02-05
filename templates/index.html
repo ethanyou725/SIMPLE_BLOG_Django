@@ -1,37 +1,59 @@
-<html lang="en">
+<!DOCTYPE html><html><head><meta charset=utf-8><title>myapp</title><script src=https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.14.1/lodash.min.js></script><link type=text/css rel=stylesheet href=http://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css><style lang="">*{
+      padding: 0;
+      margin: 0;
+      border-radius: 2px;
+    }
+    
+      li{
+        list-style: none;
+        text-align: left
+      }
+      #app{
+        display: flex;
+       
+        justify-content: space-between;
+      }
+.paperbox::before {
+    -webkit-transform: skew(-15deg) rotate(-6deg);
+    -moz-transform: skew(-15deg) rotate(-6deg);
+    transform: skew(-15deg) rotate(-6deg);
+    left: 15px;
+    width: 70%;
+    height: 55%;
+    content:"";
+    -webkit-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); 
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    position: absolute;
+    bottom: 10px;
+    z-index: -1;	
+}
+  .paperbox{
+    background-color: #eee;
+    padding: 20%;
+    order: -1;
+    background-color: #fff;
+    border: 1px solid #eee;
+    -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 60px rgba(0, 0, 0, 0.06) inset;
+    -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset; 
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
+    position: relative;
+    *zoom: 1;
 
-<head>
-    <meta charset="UTF-8">
-    <title>ReactDemo1</title>
-    <link rel="stylesheet" type="text/css" href="">
-    <link href="http://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <style>
-        html {
-            font-family: Helvetica Neue, Arial, sans-serif;
-            font-size: 15px;
-            color: #444;
-            /*background:rgb(249, 249, 249);*/
-            background: url("http://pics.sc.chinaz.com/files/pic/pic9/201610/fpic7904.jpg") repeat;
-            background-attachment: fixed;
-            margin: 0;
-            padding: 0;
-            box-sizing:border-box;
-        }
-        div{
-            border-radius: 2px;
-        }
-        img{
-		width:103px;
-		height:89px;
-		}
-    </style>
-</head>
+  }
 
-<body>
-    <!--要插入React组件的位置-->
-    <div id="app"></div>
-    <!--引入bundle.js-->
-    <script src="/static/js/bundle.js"></script>
-</body>
-
-</html>
+  .paperbox::after{
+    -webkit-transform: skew(15deg) rotate(6deg);
+    -moz-transform: skew(15deg) rotate(6deg);
+    transform: skew(15deg) rotate(6deg);
+    right: 15px;
+    width: 70%;
+    height: 55%;
+    content: ' ';
+    -webkit-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); 
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    position: absolute;
+    bottom: 10px;
+    z-index: -1;	
+  }</style><link href=/static/css/app.8d4b72edc82e2d259313ad65cc0a3ced.css rel=stylesheet></head><body><div id=app></div><script type=text/javascript src=/static/js/manifest.711b0ae68d6d330ddb01.js></script><script type=text/javascript src=/static/js/vendor.96148ef7f9524533a9bd.js></script><script type=text/javascript src=/static/js/app.72f49563b5a1a11860f2.js></script></body></html>

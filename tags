@@ -1,0 +1,126 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+0001_initial.py	article/migrations/0001_initial.py	1;"	kind:file	line:1
+0002_auto_20160926_1708.py	article/migrations/0002_auto_20160926_1708.py	1;"	kind:file	line:1
+0003_article_author.py	article/migrations/0003_article_author.py	1;"	kind:file	line:1
+0004_remove_article_author.py	article/migrations/0004_remove_article_author.py	1;"	kind:file	line:1
+ALLOWED_HOSTS	mysite/settings.py	/^ALLOWED_HOSTS = ['*']$/;"	kind:variable	line:28
+AUTH_PASSWORD_VALIDATORS	mysite/settings.py	/^AUTH_PASSWORD_VALIDATORS = [$/;"	kind:variable	line:124
+Article	article/models.py	/^class Article(models.Model):$/;"	kind:class	line:7
+ArticleAdmin	article/admin.py	/^class ArticleAdmin(admin.ModelAdmin):$/;"	kind:class	line:7
+ArticleConfig	article/apps.py	/^class ArticleConfig(AppConfig):$/;"	kind:class	line:3
+ArticleDetailSerializer	article/serializers.py	/^class ArticleDetailSerializer(serializers.HyperlinkedModelSerializer):$/;"	kind:class	line:6
+ArticleDetailViewSet	article/views.py	/^class ArticleDetailViewSet(viewsets.ReadOnlyModelViewSet):$/;"	kind:class	line:165
+ArticleListSerializer	article/serializers.py	/^class ArticleListSerializer(serializers.HyperlinkedModelSerializer):$/;"	kind:class	line:30
+ArticleListViewSet	article/views.py	/^class ArticleListViewSet(viewsets.ReadOnlyModelViewSet):$/;"	kind:class	line:179
+BASE_DIR	mysite/settings.py	/^BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))$/;"	kind:variable	line:16
+BOOTSTRAP_ADMIN_SIDEBAR_MENU	mysite/settings.py	/^BOOTSTRAP_ADMIN_SIDEBAR_MENU = True$/;"	kind:variable	line:75
+CORS_ORIGIN_ALLOW_ALL	mysite/settings.py	/^CORS_ORIGIN_ALLOW_ALL =True$/;"	kind:variable	line:57
+CORS_ORIGIN_WHITELIST	mysite/settings.py	/^CORS_ORIGIN_WHITELIST= ['127.0.0.1:8080','127.0.0.1:8111']$/;"	kind:variable	line:58
+DATABASES	mysite/settings.py	/^DATABASES = {$/;"	kind:variable	line:114
+DEBUG	mysite/settings.py	/^DEBUG = True$/;"	kind:variable	line:25
+INSTALLED_APPS	mysite/settings.py	/^INSTALLED_APPS = [$/;"	kind:variable	line:32
+LANGUAGE_CODE	mysite/settings.py	/^LANGUAGE_CODE = 'en-us'$/;"	kind:variable	line:142
+MIDDLEWARE	mysite/settings.py	/^MIDDLEWARE = [$/;"	kind:variable	line:47
+Meta	article/models.py	/^    class Meta:  # 按id降序$/;"	kind:class	line:22
+Meta	article/serializers.py	/^    class Meta:$/;"	kind:class	line:26
+Meta	article/serializers.py	/^    class Meta:$/;"	kind:class	line:33
+Migration	article/migrations/0001_initial.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:8
+Migration	article/migrations/0002_auto_20160926_1708.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:8
+Migration	article/migrations/0003_article_author.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:10
+Migration	article/migrations/0004_remove_article_author.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:8
+REST_FRAMEWORK	mysite/settings.py	/^REST_FRAMEWORK = {$/;"	kind:variable	line:98
+ROOT_URLCONF	mysite/settings.py	/^ROOT_URLCONF = 'mysite.urls'$/;"	kind:variable	line:72
+STATICFILES_DIRS	mysite/settings.py	/^STATICFILES_DIRS = [$/;"	kind:variable	line:162
+STATICFILES_FINDERS	mysite/settings.py	/^STATICFILES_FINDERS = ($/;"	kind:variable	line:167
+STATIC_ROOT	mysite/settings.py	/^STATIC_ROOT = os.path.join(BASE_DIR, 'collected_static')$/;"	kind:variable	line:160
+STATIC_URL	mysite/settings.py	/^STATIC_URL = '\/static\/'$/;"	kind:variable	line:155
+SearchForm	article/forms.py	/^class SearchForm(forms.Form):$/;"	kind:class	line:4
+TEMPLATES	mysite/settings.py	/^TEMPLATES = [$/;"	kind:variable	line:77
+TIME_ZONE	mysite/settings.py	/^TIME_ZONE = 'UTC'$/;"	kind:variable	line:144
+USE_I18N	mysite/settings.py	/^USE_I18N = True$/;"	kind:variable	line:146
+USE_L10N	mysite/settings.py	/^USE_L10N = True$/;"	kind:variable	line:148
+USE_TZ	mysite/settings.py	/^USE_TZ = True$/;"	kind:variable	line:150
+WSGI_APPLICATION	mysite/settings.py	/^WSGI_APPLICATION = 'mysite.wsgi.application'$/;"	kind:variable	line:95
+__init__.py	article/__init__.py	1;"	kind:file	line:1
+__init__.py	article/migrations/__init__.py	1;"	kind:file	line:1
+__init__.py	article/templatetags/__init__.py	1;"	kind:file	line:1
+__init__.py	mysite/__init__.py	1;"	kind:file	line:1
+__str__	article/models.py	/^    def __str__(self):$/;"	kind:member	line:15
+admin.py	article/admin.py	1;"	kind:file	line:1
+application	mysite/wsgi.py	/^application = get_wsgi_application()$/;"	kind:variable	line:16
+apps.py	article/apps.py	1;"	kind:file	line:1
+article_detail	article/urls.py	/^article_detail = views.ArticleDetailViewSet.as_view({$/;"	kind:variable	line:19
+article_list	article/urls.py	/^article_list = views.ArticleListViewSet.as_view({$/;"	kind:variable	line:16
+attrs	article/forms.py	/^        attrs={'class': 'form-control'}),$/;"	kind:variable	line:6
+category	article/models.py	/^    category = models.CharField(max_length=50)  # 标签$/;"	kind:variable	line:9
+category	article/serializers.py	/^    category = serializers.CharField(max_length=50)$/;"	kind:variable	line:9
+content	article/models.py	/^    content = models.TextField()  # 内容$/;"	kind:variable	line:11
+content	article/serializers.py	/^    content = serializers.CharField()$/;"	kind:variable	line:11
+create	article/serializers.py	/^    def create(self, validated_data):$/;"	kind:member	line:14
+date_time	article/models.py	/^    date_time = models.DateTimeField(auto_now_add=True)  # 日期$/;"	kind:variable	line:10
+date_time	article/serializers.py	/^    date_time = serializers.DateTimeField(default=datetime.now())$/;"	kind:variable	line:10
+demo.py	article/templatetags/demo.py	1;"	kind:file	line:1
+dependencies	article/migrations/0001_initial.py	/^    dependencies = [$/;"	kind:variable	line:12
+dependencies	article/migrations/0002_auto_20160926_1708.py	/^    dependencies = [$/;"	kind:variable	line:10
+dependencies	article/migrations/0003_article_author.py	/^    dependencies = [$/;"	kind:variable	line:12
+dependencies	article/migrations/0004_remove_article_author.py	/^    dependencies = [$/;"	kind:variable	line:10
+detail	article/views.py	/^    def detail(self,req,*args,**kwargs):$/;"	kind:member	line:174
+field	article/migrations/0003_article_author.py	/^            field=models.ForeignKey(default='root', on_delete=django.db.models.deletion.CASCADE, related_name='articles', to=settings.AUTH_USER_MODEL),$/;"	kind:variable	line:21
+fields	article/migrations/0001_initial.py	/^            fields=[$/;"	kind:variable	line:18
+fields	article/serializers.py	/^        fields = ('id','title','category','date_time')$/;"	kind:variable	line:35
+fields	article/serializers.py	/^        fields = ('id','title','category','date_time','content')$/;"	kind:variable	line:28
+forms.py	article/forms.py	1;"	kind:file	line:1
+hello	article/views.py	/^def hello(request):$/;"	kind:function	line:16
+id	article/serializers.py	/^    id = serializers.CharField(read_only=True)$/;"	kind:variable	line:7
+initial	article/migrations/0001_initial.py	/^    initial = True$/;"	kind:variable	line:10
+list_display	article/admin.py	/^    list_display = ('title','category','date_time',)$/;"	kind:variable	line:8
+manage.py	manage.py	1;"	kind:file	line:1
+max_length	article/forms.py	/^        max_length=50,$/;"	kind:variable	line:7
+model	article/serializers.py	/^        model = Article$/;"	kind:variable	line:27
+model	article/serializers.py	/^        model = Article$/;"	kind:variable	line:34
+model_name	article/migrations/0003_article_author.py	/^            model_name='article',$/;"	kind:variable	line:19
+model_name	article/migrations/0004_remove_article_author.py	/^            model_name='article',$/;"	kind:variable	line:16
+models.py	article/models.py	1;"	kind:file	line:1
+my_markdown	article/templatetags/my_markdown.py	/^def my_markdown(value):$/;"	kind:function	line:14
+my_markdown.py	article/templatetags/my_markdown.py	1;"	kind:file	line:1
+name	article/apps.py	/^    name = 'article'$/;"	kind:variable	line:4
+name	article/migrations/0001_initial.py	/^            name='Article',$/;"	kind:variable	line:17
+name	article/migrations/0002_auto_20160926_1708.py	/^            name='article',$/;"	kind:variable	line:16
+name	article/migrations/0003_article_author.py	/^            name='author',$/;"	kind:variable	line:20
+name	article/migrations/0004_remove_article_author.py	/^            name='author',$/;"	kind:variable	line:17
+operations	article/migrations/0001_initial.py	/^    operations = [$/;"	kind:variable	line:15
+operations	article/migrations/0002_auto_20160926_1708.py	/^    operations = [$/;"	kind:variable	line:14
+operations	article/migrations/0003_article_author.py	/^    operations = [$/;"	kind:variable	line:17
+operations	article/migrations/0004_remove_article_author.py	/^    operations = [$/;"	kind:variable	line:14
+options	article/migrations/0001_initial.py	/^            options={$/;"	kind:variable	line:25
+options	article/migrations/0002_auto_20160926_1708.py	/^            options={'ordering': ['id']},$/;"	kind:variable	line:17
+ordering	article/models.py	/^        ordering = ['id']$/;"	kind:variable	line:23
+permission_classes	article/views.py	/^    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)$/;"	kind:variable	line:170
+permission_classes	article/views.py	/^    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)$/;"	kind:variable	line:184
+preserve_default	article/migrations/0003_article_author.py	/^            preserve_default=False,$/;"	kind:variable	line:22
+q	article/forms.py	/^    q=forms.CharField(widget=forms.TextInput($/;"	kind:variable	line:5
+queryset	article/views.py	/^    queryset = Article.objects.values("id","title","category","date_time")$/;"	kind:variable	line:181
+queryset	article/views.py	/^    queryset = Article.objects.values("id","title","category","date_time","content")$/;"	kind:variable	line:167
+register	article/templatetags/my_markdown.py	/^register = template.Library()  #all the tags and filters are registered$/;"	kind:variable	line:9
+router	article/urls.py	/^router = DefaultRouter()$/;"	kind:variable	line:26
+schema_view	mysite/urls.py	/^schema_view = get_schema_view(title='Pastebin API')$/;"	kind:variable	line:11
+serializer_class	article/views.py	/^    serializer_class = ArticleDetailSerializer$/;"	kind:variable	line:169
+serializer_class	article/views.py	/^    serializer_class = ArticleListSerializer$/;"	kind:variable	line:183
+serializers.py	article/serializers.py	1;"	kind:file	line:1
+settings.py	mysite/settings.py	1;"	kind:file	line:1
+tests.py	article/tests.py	1;"	kind:file	line:1
+title	article/models.py	/^    title = models.CharField(max_length=100)  # 题目$/;"	kind:variable	line:8
+title	article/serializers.py	/^    title = serializers.CharField(required=True,max_length=100)$/;"	kind:variable	line:8
+update	article/serializers.py	/^    def update(self, instance, validated_data):$/;"	kind:member	line:18
+urlpatterns	article/urls.py	/^urlpatterns = [$/;"	kind:variable	line:30
+urlpatterns	article/urls.py	/^urlpatterns = format_suffix_patterns(urlpatterns)/;"	kind:variable	line:39
+urlpatterns	mysite/urls.py	/^urlpatterns = [$/;"	kind:variable	line:13
+urls.py	article/urls.py	1;"	kind:file	line:1
+urls.py	mysite/urls.py	1;"	kind:file	line:1
+views.py	article/views.py	1;"	kind:file	line:1
+wsgi.py	mysite/wsgi.py	1;"	kind:file	line:1
