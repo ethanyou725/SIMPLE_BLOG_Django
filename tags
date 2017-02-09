@@ -9,7 +9,7 @@
 0003_article_author.py	article/migrations/0003_article_author.py	1;"	kind:file	line:1
 0004_remove_article_author.py	article/migrations/0004_remove_article_author.py	1;"	kind:file	line:1
 ALLOWED_HOSTS	mysite/settings.py	/^ALLOWED_HOSTS = ['*']$/;"	kind:variable	line:28
-AUTH_PASSWORD_VALIDATORS	mysite/settings.py	/^AUTH_PASSWORD_VALIDATORS = [$/;"	kind:variable	line:124
+AUTH_PASSWORD_VALIDATORS	mysite/settings.py	/^AUTH_PASSWORD_VALIDATORS = [$/;"	kind:variable	line:126
 Article	article/models.py	/^class Article(models.Model):$/;"	kind:class	line:7
 ArticleAdmin	article/admin.py	/^class ArticleAdmin(admin.ModelAdmin):$/;"	kind:class	line:7
 ArticleConfig	article/apps.py	/^class ArticleConfig(AppConfig):$/;"	kind:class	line:3
@@ -18,14 +18,13 @@ ArticleDetailViewSet	article/views.py	/^class ArticleDetailViewSet(viewsets.Read
 ArticleListSerializer	article/serializers.py	/^class ArticleListSerializer(serializers.HyperlinkedModelSerializer):$/;"	kind:class	line:30
 ArticleListViewSet	article/views.py	/^class ArticleListViewSet(viewsets.ReadOnlyModelViewSet):$/;"	kind:class	line:179
 BASE_DIR	mysite/settings.py	/^BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))$/;"	kind:variable	line:16
-BOOTSTRAP_ADMIN_SIDEBAR_MENU	mysite/settings.py	/^BOOTSTRAP_ADMIN_SIDEBAR_MENU = True$/;"	kind:variable	line:75
-CORS_ORIGIN_ALLOW_ALL	mysite/settings.py	/^CORS_ORIGIN_ALLOW_ALL =True$/;"	kind:variable	line:57
-CORS_ORIGIN_WHITELIST	mysite/settings.py	/^CORS_ORIGIN_WHITELIST= ['127.0.0.1:8080','127.0.0.1:8111']$/;"	kind:variable	line:58
-DATABASES	mysite/settings.py	/^DATABASES = {$/;"	kind:variable	line:114
+BOOTSTRAP_ADMIN_SIDEBAR_MENU	mysite/settings.py	/^BOOTSTRAP_ADMIN_SIDEBAR_MENU = True$/;"	kind:variable	line:77
+CORS_ORIGIN_ALLOW_ALL	mysite/settings.py	/^CORS_ORIGIN_ALLOW_ALL =True$/;"	kind:variable	line:59
+DATABASES	mysite/settings.py	/^DATABASES = {$/;"	kind:variable	line:116
 DEBUG	mysite/settings.py	/^DEBUG = True$/;"	kind:variable	line:25
 INSTALLED_APPS	mysite/settings.py	/^INSTALLED_APPS = [$/;"	kind:variable	line:32
-LANGUAGE_CODE	mysite/settings.py	/^LANGUAGE_CODE = 'en-us'$/;"	kind:variable	line:142
-MIDDLEWARE	mysite/settings.py	/^MIDDLEWARE = [$/;"	kind:variable	line:47
+LANGUAGE_CODE	mysite/settings.py	/^LANGUAGE_CODE = 'en-us'$/;"	kind:variable	line:144
+MIDDLEWARE	mysite/settings.py	/^MIDDLEWARE = [$/;"	kind:variable	line:48
 Meta	article/models.py	/^    class Meta:  # 按id降序$/;"	kind:class	line:22
 Meta	article/serializers.py	/^    class Meta:$/;"	kind:class	line:26
 Meta	article/serializers.py	/^    class Meta:$/;"	kind:class	line:33
@@ -33,19 +32,19 @@ Migration	article/migrations/0001_initial.py	/^class Migration(migrations.Migrat
 Migration	article/migrations/0002_auto_20160926_1708.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:8
 Migration	article/migrations/0003_article_author.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:10
 Migration	article/migrations/0004_remove_article_author.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:8
-REST_FRAMEWORK	mysite/settings.py	/^REST_FRAMEWORK = {$/;"	kind:variable	line:98
-ROOT_URLCONF	mysite/settings.py	/^ROOT_URLCONF = 'mysite.urls'$/;"	kind:variable	line:72
-STATICFILES_DIRS	mysite/settings.py	/^STATICFILES_DIRS = [$/;"	kind:variable	line:162
-STATICFILES_FINDERS	mysite/settings.py	/^STATICFILES_FINDERS = ($/;"	kind:variable	line:167
-STATIC_ROOT	mysite/settings.py	/^STATIC_ROOT = os.path.join(BASE_DIR, 'collected_static')$/;"	kind:variable	line:160
-STATIC_URL	mysite/settings.py	/^STATIC_URL = '\/static\/'$/;"	kind:variable	line:155
+REST_FRAMEWORK	mysite/settings.py	/^REST_FRAMEWORK = {$/;"	kind:variable	line:100
+ROOT_URLCONF	mysite/settings.py	/^ROOT_URLCONF = 'mysite.urls'$/;"	kind:variable	line:74
+STATICFILES_DIRS	mysite/settings.py	/^STATICFILES_DIRS = [$/;"	kind:variable	line:164
+STATICFILES_FINDERS	mysite/settings.py	/^STATICFILES_FINDERS = ($/;"	kind:variable	line:169
+STATIC_ROOT	mysite/settings.py	/^STATIC_ROOT = os.path.join(BASE_DIR, 'collected_static')$/;"	kind:variable	line:162
+STATIC_URL	mysite/settings.py	/^STATIC_URL = '\/static\/'$/;"	kind:variable	line:157
 SearchForm	article/forms.py	/^class SearchForm(forms.Form):$/;"	kind:class	line:4
-TEMPLATES	mysite/settings.py	/^TEMPLATES = [$/;"	kind:variable	line:77
-TIME_ZONE	mysite/settings.py	/^TIME_ZONE = 'UTC'$/;"	kind:variable	line:144
-USE_I18N	mysite/settings.py	/^USE_I18N = True$/;"	kind:variable	line:146
-USE_L10N	mysite/settings.py	/^USE_L10N = True$/;"	kind:variable	line:148
-USE_TZ	mysite/settings.py	/^USE_TZ = True$/;"	kind:variable	line:150
-WSGI_APPLICATION	mysite/settings.py	/^WSGI_APPLICATION = 'mysite.wsgi.application'$/;"	kind:variable	line:95
+TEMPLATES	mysite/settings.py	/^TEMPLATES = [$/;"	kind:variable	line:79
+TIME_ZONE	mysite/settings.py	/^TIME_ZONE = 'UTC'$/;"	kind:variable	line:146
+USE_I18N	mysite/settings.py	/^USE_I18N = True$/;"	kind:variable	line:148
+USE_L10N	mysite/settings.py	/^USE_L10N = True$/;"	kind:variable	line:150
+USE_TZ	mysite/settings.py	/^USE_TZ = True$/;"	kind:variable	line:152
+WSGI_APPLICATION	mysite/settings.py	/^WSGI_APPLICATION = 'mysite.wsgi.application'$/;"	kind:variable	line:97
 __init__.py	article/__init__.py	1;"	kind:file	line:1
 __init__.py	article/migrations/__init__.py	1;"	kind:file	line:1
 __init__.py	article/templatetags/__init__.py	1;"	kind:file	line:1
