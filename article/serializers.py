@@ -1,11 +1,14 @@
+from datetime import datetime
 from rest_framework import serializers
 from article.models import Article
-from datetime import datetime
 
 
 class ArticleDetailSerializer(serializers.HyperlinkedModelSerializer):
+    '''
+    articledetail(id,category,posttime,title,content) serializer
+    '''
     id = serializers.CharField(read_only=True)
-    title = serializers.CharField(required=True,max_length=100)
+    title = serializers.CharField(required=True, max_length=100)
     category = serializers.CharField(max_length=50)
     date_time = serializers.DateTimeField(default=datetime.now())
     content = serializers.CharField()
@@ -16,23 +19,27 @@ class ArticleDetailSerializer(serializers.HyperlinkedModelSerializer):
 
 
     def update(self, instance, validated_data):
-        instance.title= validated_data.get('title',instance.title)
-        instance.category= validated_data.get('category',instance.category)
-        instance.date_time = validated_data.get('date_time',instance.date_time)
-        instance.content = validated_data.get('content',validated_data.content)
+        instance.title = validated_data.get('title', instance.title)
+        instance.category = validated_data.get('category', instance.category)
+        instance.date_time = validated_data.get('date_time', instance.date_time)
+        instance.content = validated_data.get('content', validated_data.content)
         instance.save()
         return instance
 
     class Meta:
+        '''meta'''
         model = Article
-        fields = ('id','title','category','date_time','content')
+        fields = ('id', 'title', 'category', 'date_time', 'content')
+
 
 class ArticleListSerializer(serializers.HyperlinkedModelSerializer):
-   
-
+    '''
+    articledetail(id, category, posttime, title) serializer
+    '''
     class Meta:
+        '''meta'''
         model = Article
-        fields = ('id','title','category','date_time')
+        fields = ('id', 'title', 'category', 'date_time')
 
 
 # from django.contrib.auth.models import User

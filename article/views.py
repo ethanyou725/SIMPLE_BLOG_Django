@@ -164,7 +164,7 @@ from rest_framework.decorators import detail_route
 
 class ArticleDetailViewSet(viewsets.ReadOnlyModelViewSet):
 
-    queryset = Article.objects.values("id","title","category","date_time","content")
+    queryset = Article.objects.values("id", "title", "category", "date_time", "content")
     # queryset = Article.objects.all()
     serializer_class = ArticleDetailSerializer
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,)

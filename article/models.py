@@ -5,6 +5,9 @@ from django.core.urlresolvers import reverse
 
 
 class Article(models.Model):
+    '''
+    article model
+    '''
     title = models.CharField(max_length=100)  # 题目
     category = models.CharField(max_length=50)  # 标签
     date_time = models.DateTimeField(auto_now_add=True)  # 日期
@@ -20,6 +23,7 @@ class Article(models.Model):
     #     return '/post/%i/' % self.id
 
     class Meta:  # 按id降序
+        '''order by id'''
         ordering = ['id']
 
 

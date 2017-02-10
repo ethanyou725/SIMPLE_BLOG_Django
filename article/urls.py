@@ -28,8 +28,8 @@ router.register(r'articles', views.ArticleDetailViewSet)
 
 
 urlpatterns = [
-    url(r'^articles/$',article_list,name = 'articles'),
-    url(r'^articles/(?P<pk>[0-9]+)/$',article_detail,name='detail'),
+    url(r'^articles/$', article_list, name='articles'),
+    url(r'^articles/(?P<pk>[0-9]+)/$', article_detail, name='detail'),
     # url(r'^users/$', views.UserList.as_view()),
     # url(r'^users/(?P<pk>[0-9]+)/$', views.UserDetail.as_view()),
     #  url(r'^', include(router.urls)),
