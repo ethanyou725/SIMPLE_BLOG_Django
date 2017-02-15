@@ -9,21 +9,21 @@
 0003_article_author.py	article/migrations/0003_article_author.py	1;"	kind:file	line:1
 0004_remove_article_author.py	article/migrations/0004_remove_article_author.py	1;"	kind:file	line:1
 ALLOWED_HOSTS	mysite/settings.py	/^ALLOWED_HOSTS = ['*']$/;"	kind:variable	line:28
-AUTH_PASSWORD_VALIDATORS	mysite/settings.py	/^AUTH_PASSWORD_VALIDATORS = [$/;"	kind:variable	line:126
+AUTH_PASSWORD_VALIDATORS	mysite/settings.py	/^AUTH_PASSWORD_VALIDATORS = [$/;"	kind:variable	line:125
 Article	article/models.py	/^class Article(models.Model):$/;"	kind:class	line:7
 ArticleAdmin	article/admin.py	/^class ArticleAdmin(admin.ModelAdmin):$/;"	kind:class	line:7
 ArticleConfig	article/apps.py	/^class ArticleConfig(AppConfig):$/;"	kind:class	line:3
 ArticleDetailSerializer	article/serializers.py	/^class ArticleDetailSerializer(serializers.HyperlinkedModelSerializer):$/;"	kind:class	line:6
-ArticleDetailViewSet	article/views.py	/^class ArticleDetailViewSet(viewsets.ReadOnlyModelViewSet):$/;"	kind:class	line:165
+ArticleDetailViewSet	article/views.py	/^class ArticleDetailViewSet(viewsets.ReadOnlyModelViewSet):$/;"	kind:class	line:163
 ArticleListSerializer	article/serializers.py	/^class ArticleListSerializer(serializers.HyperlinkedModelSerializer):$/;"	kind:class	line:35
-ArticleListViewSet	article/views.py	/^class ArticleListViewSet(viewsets.ReadOnlyModelViewSet):$/;"	kind:class	line:179
+ArticleListViewSet	article/views.py	/^class ArticleListViewSet(viewsets.ReadOnlyModelViewSet):$/;"	kind:class	line:177
 BASE_DIR	mysite/settings.py	/^BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))$/;"	kind:variable	line:16
 BOOTSTRAP_ADMIN_SIDEBAR_MENU	mysite/settings.py	/^BOOTSTRAP_ADMIN_SIDEBAR_MENU = True$/;"	kind:variable	line:77
 CORS_ORIGIN_ALLOW_ALL	mysite/settings.py	/^CORS_ORIGIN_ALLOW_ALL =True$/;"	kind:variable	line:59
-DATABASES	mysite/settings.py	/^DATABASES = {$/;"	kind:variable	line:116
+DATABASES	mysite/settings.py	/^DATABASES = {$/;"	kind:variable	line:115
 DEBUG	mysite/settings.py	/^DEBUG = True$/;"	kind:variable	line:25
 INSTALLED_APPS	mysite/settings.py	/^INSTALLED_APPS = [$/;"	kind:variable	line:32
-LANGUAGE_CODE	mysite/settings.py	/^LANGUAGE_CODE = 'en-us'$/;"	kind:variable	line:144
+LANGUAGE_CODE	mysite/settings.py	/^LANGUAGE_CODE = 'en-us'$/;"	kind:variable	line:143
 MIDDLEWARE	mysite/settings.py	/^MIDDLEWARE = [$/;"	kind:variable	line:48
 Meta	article/models.py	/^    class Meta:  # 按id降序$/;"	kind:class	line:25
 Meta	article/serializers.py	/^    class Meta:$/;"	kind:class	line:29
@@ -32,19 +32,20 @@ Migration	article/migrations/0001_initial.py	/^class Migration(migrations.Migrat
 Migration	article/migrations/0002_auto_20160926_1708.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:8
 Migration	article/migrations/0003_article_author.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:10
 Migration	article/migrations/0004_remove_article_author.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:8
-REST_FRAMEWORK	mysite/settings.py	/^REST_FRAMEWORK = {$/;"	kind:variable	line:100
+REST_FRAMEWORK	mysite/settings.py	/^REST_FRAMEWORK = {$/;"	kind:variable	line:99
 ROOT_URLCONF	mysite/settings.py	/^ROOT_URLCONF = 'mysite.urls'$/;"	kind:variable	line:74
-STATICFILES_DIRS	mysite/settings.py	/^STATICFILES_DIRS = [$/;"	kind:variable	line:164
-STATICFILES_FINDERS	mysite/settings.py	/^STATICFILES_FINDERS = ($/;"	kind:variable	line:169
-STATIC_ROOT	mysite/settings.py	/^STATIC_ROOT = os.path.join(BASE_DIR, 'collected_static')$/;"	kind:variable	line:162
-STATIC_URL	mysite/settings.py	/^STATIC_URL = '\/static\/'$/;"	kind:variable	line:157
+RSSFeed	article/views.py	/^class RSSFeed(Feed) :$/;"	kind:class	line:187
+STATICFILES_DIRS	mysite/settings.py	/^STATICFILES_DIRS = [$/;"	kind:variable	line:163
+STATICFILES_FINDERS	mysite/settings.py	/^STATICFILES_FINDERS = ($/;"	kind:variable	line:168
+STATIC_ROOT	mysite/settings.py	/^STATIC_ROOT = os.path.join(BASE_DIR, 'collected_static')$/;"	kind:variable	line:161
+STATIC_URL	mysite/settings.py	/^STATIC_URL = '\/static\/'$/;"	kind:variable	line:156
 SearchForm	article/forms.py	/^class SearchForm(forms.Form):$/;"	kind:class	line:4
 TEMPLATES	mysite/settings.py	/^TEMPLATES = [$/;"	kind:variable	line:79
-TIME_ZONE	mysite/settings.py	/^TIME_ZONE = 'UTC'$/;"	kind:variable	line:146
-USE_I18N	mysite/settings.py	/^USE_I18N = True$/;"	kind:variable	line:148
-USE_L10N	mysite/settings.py	/^USE_L10N = True$/;"	kind:variable	line:150
-USE_TZ	mysite/settings.py	/^USE_TZ = True$/;"	kind:variable	line:152
-WSGI_APPLICATION	mysite/settings.py	/^WSGI_APPLICATION = 'mysite.wsgi.application'$/;"	kind:variable	line:97
+TIME_ZONE	mysite/settings.py	/^TIME_ZONE = 'UTC'$/;"	kind:variable	line:145
+USE_I18N	mysite/settings.py	/^USE_I18N = True$/;"	kind:variable	line:147
+USE_L10N	mysite/settings.py	/^USE_L10N = True$/;"	kind:variable	line:149
+USE_TZ	mysite/settings.py	/^USE_TZ = True$/;"	kind:variable	line:151
+WSGI_APPLICATION	mysite/settings.py	/^WSGI_APPLICATION = 'mysite.wsgi.application'$/;"	kind:variable	line:96
 __init__.py	article/__init__.py	1;"	kind:file	line:1
 __init__.py	article/migrations/__init__.py	1;"	kind:file	line:1
 __init__.py	article/templatetags/__init__.py	1;"	kind:file	line:1
@@ -68,15 +69,21 @@ dependencies	article/migrations/0001_initial.py	/^    dependencies = [$/;"	kind:
 dependencies	article/migrations/0002_auto_20160926_1708.py	/^    dependencies = [$/;"	kind:variable	line:10
 dependencies	article/migrations/0003_article_author.py	/^    dependencies = [$/;"	kind:variable	line:12
 dependencies	article/migrations/0004_remove_article_author.py	/^    dependencies = [$/;"	kind:variable	line:10
-detail	article/views.py	/^    def detail(self,req,*args,**kwargs):$/;"	kind:member	line:174
+description	article/views.py	/^    description = "RSS feed - blog posts"$/;"	kind:variable	line:191
+detail	article/views.py	/^    def detail(self,req,*args,**kwargs):$/;"	kind:member	line:172
 field	article/migrations/0003_article_author.py	/^            field=models.ForeignKey(default='root', on_delete=django.db.models.deletion.CASCADE, related_name='articles', to=settings.AUTH_USER_MODEL),$/;"	kind:variable	line:21
 fields	article/migrations/0001_initial.py	/^            fields=[$/;"	kind:variable	line:18
 fields	article/serializers.py	/^        fields = ('id', 'title', 'category', 'date_time')$/;"	kind:variable	line:42
 fields	article/serializers.py	/^        fields = ('id', 'title', 'category', 'date_time', 'content')$/;"	kind:variable	line:32
 forms.py	article/forms.py	1;"	kind:file	line:1
-hello	article/views.py	/^def hello(request):$/;"	kind:function	line:16
+get_absolute_url	article/models.py	/^    def get_absolute_url(self):$/;"	kind:member	line:21
 id	article/serializers.py	/^    id = serializers.CharField(read_only=True)$/;"	kind:variable	line:10
 initial	article/migrations/0001_initial.py	/^    initial = True$/;"	kind:variable	line:10
+item_description	article/views.py	/^    def item_description(self, item):$/;"	kind:member	line:199
+item_pubdate	article/views.py	/^    def item_pubdate(self, item):$/;"	kind:member	line:197
+item_title	article/views.py	/^    def item_title(self, item):$/;"	kind:member	line:195
+items	article/views.py	/^    def items(self):$/;"	kind:member	line:193
+link	article/views.py	/^    link = "feeds\/posts\/"$/;"	kind:variable	line:190
 list_display	article/admin.py	/^    list_display = ('title','category','date_time',)$/;"	kind:variable	line:8
 manage.py	manage.py	1;"	kind:file	line:1
 max_length	article/forms.py	/^        max_length=50,$/;"	kind:variable	line:7
@@ -99,22 +106,22 @@ operations	article/migrations/0004_remove_article_author.py	/^    operations = [
 options	article/migrations/0001_initial.py	/^            options={$/;"	kind:variable	line:25
 options	article/migrations/0002_auto_20160926_1708.py	/^            options={'ordering': ['id']},$/;"	kind:variable	line:17
 ordering	article/models.py	/^        ordering = ['id']$/;"	kind:variable	line:27
-permission_classes	article/views.py	/^    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)$/;"	kind:variable	line:170
-permission_classes	article/views.py	/^    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)$/;"	kind:variable	line:184
+permission_classes	article/views.py	/^    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)$/;"	kind:variable	line:168
+permission_classes	article/views.py	/^    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)$/;"	kind:variable	line:182
 preserve_default	article/migrations/0003_article_author.py	/^            preserve_default=False,$/;"	kind:variable	line:22
 q	article/forms.py	/^    q=forms.CharField(widget=forms.TextInput($/;"	kind:variable	line:5
-queryset	article/views.py	/^    queryset = Article.objects.values("id", "title", "category", "date_time", "content")$/;"	kind:variable	line:167
-queryset	article/views.py	/^    queryset = Article.objects.values("id","title","category","date_time")$/;"	kind:variable	line:181
+queryset	article/views.py	/^    queryset = Article.objects.values("id", "title", "category", "date_time", "content")$/;"	kind:variable	line:165
+queryset	article/views.py	/^    queryset = Article.objects.values("id","title","category","date_time")$/;"	kind:variable	line:179
 register	article/templatetags/my_markdown.py	/^register = template.Library()  #all the tags and filters are registered$/;"	kind:variable	line:9
 router	article/urls.py	/^router = DefaultRouter()$/;"	kind:variable	line:26
-schema_view	mysite/urls.py	/^schema_view = get_schema_view(title='Pastebin API')$/;"	kind:variable	line:8
-serializer_class	article/views.py	/^    serializer_class = ArticleDetailSerializer$/;"	kind:variable	line:169
-serializer_class	article/views.py	/^    serializer_class = ArticleListSerializer$/;"	kind:variable	line:183
+serializer_class	article/views.py	/^    serializer_class = ArticleDetailSerializer$/;"	kind:variable	line:167
+serializer_class	article/views.py	/^    serializer_class = ArticleListSerializer$/;"	kind:variable	line:181
 serializers.py	article/serializers.py	1;"	kind:file	line:1
 settings.py	mysite/settings.py	1;"	kind:file	line:1
 tests.py	article/tests.py	1;"	kind:file	line:1
 title	article/models.py	/^    title = models.CharField(max_length=100)  # 题目$/;"	kind:variable	line:11
 title	article/serializers.py	/^    title = serializers.CharField(required=True, max_length=100)$/;"	kind:variable	line:11
+title	article/views.py	/^    title = "RSS feed - article"$/;"	kind:variable	line:189
 update	article/serializers.py	/^    def update(self, instance, validated_data):$/;"	kind:member	line:21
 urlpatterns	article/urls.py	/^urlpatterns = [$/;"	kind:variable	line:30
 urlpatterns	article/urls.py	/^urlpatterns = format_suffix_patterns(urlpatterns)/;"	kind:variable	line:39

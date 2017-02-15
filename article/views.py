@@ -13,8 +13,6 @@ from rest_framework import permissions
 # Create your views here.
 
 # test
-def hello(request):
-    return HttpResponse("<h1>Hello Django</h1>")
 
 
 
@@ -184,4 +182,19 @@ class ArticleListViewSet(viewsets.ReadOnlyModelViewSet):
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
 
+from django.contrib.syndication.views import Feed 
+
+class RSSFeed(Feed) :
     
+    title = "RSS feed - article"
+    link = "feeds/posts/"
+    description = "RSS feed - blog posts"
+    
+    def items(self):
+        return Article.objects.order_by('-id')
+    def item_title(self, item):
+        return item.title
+    def item_pubdate(self, item):
+        return item.date_time
+    def item_description(self, item):
+        return item.content

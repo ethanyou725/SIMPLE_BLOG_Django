@@ -18,9 +18,9 @@ class Article(models.Model):
     def __str__(self):
         return self.title
 
-    # def get_absolute_url(self):
-    #     # path=reverse('single', kwargs={'id':self.id})
-    #     return '/post/%i/' % self.id
+    def get_absolute_url(self):
+        # path=reverse('single', kwargs={'id':self.id})
+        return '/article/%i/' % self.id
 
     class Meta:  # 按id降序
         '''order by id'''
